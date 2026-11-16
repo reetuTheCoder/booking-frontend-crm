@@ -1,0 +1,4475 @@
+
+==========================================
+FILE: ./.gitignore
+==========================================
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+public/local-bundle
+
+# Next.js
+/.next/
+/out/
+
+# Dependencies
+/node_modules
+
+==========================================
+FILE: ./eslint.config.js
+==========================================
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      globals: globals.browser,
+      parserOptions: { ecmaFeatures: { jsx: true } },
+    },
+  },
+])
+
+
+==========================================
+FILE: ./public/CNAME
+==========================================
+demo.sageion.com
+
+==========================================
+FILE: ./public/icons.svg
+==========================================
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="bluesky-icon" viewBox="0 0 16 17">
+    <g clip-path="url(#bluesky-clip)"><path fill="#08060d" d="M7.75 7.735c-.693-1.348-2.58-3.86-4.334-5.097-1.68-1.187-2.32-.981-2.74-.79C.188 2.065.1 2.812.1 3.251s.241 3.602.398 4.13c.52 1.744 2.367 2.333 4.07 2.145-2.495.37-4.71 1.278-1.805 4.512 3.196 3.309 4.38-.71 4.987-2.746.608 2.036 1.307 5.91 4.93 2.746 2.72-2.746.747-4.143-1.747-4.512 1.702.189 3.55-.4 4.07-2.145.156-.528.397-3.691.397-4.13s-.088-1.186-.575-1.406c-.42-.19-1.06-.395-2.741.79-1.755 1.24-3.64 3.752-4.334 5.099"/></g>
+    <defs><clipPath id="bluesky-clip"><path fill="#fff" d="M.1.85h15.3v15.3H.1z"/></clipPath></defs>
+  </symbol>
+  <symbol id="discord-icon" viewBox="0 0 20 19">
+    <path fill="#08060d" d="M16.224 3.768a14.5 14.5 0 0 0-3.67-1.153c-.158.286-.343.67-.47.976a13.5 13.5 0 0 0-4.067 0c-.128-.306-.317-.69-.476-.976A14.4 14.4 0 0 0 3.868 3.77C1.546 7.28.916 10.703 1.231 14.077a14.7 14.7 0 0 0 4.5 2.306q.545-.748.965-1.587a9.5 9.5 0 0 1-1.518-.74q.191-.14.372-.293c2.927 1.369 6.107 1.369 8.999 0q.183.152.372.294-.723.437-1.52.74.418.838.963 1.588a14.6 14.6 0 0 0 4.504-2.308c.37-3.911-.63-7.302-2.644-10.309m-9.13 8.234c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.894 0 1.614.82 1.599 1.82.001 1-.705 1.82-1.6 1.82m5.91 0c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.893 0 1.614.82 1.599 1.82 0 1-.706 1.82-1.6 1.82"/>
+  </symbol>
+  <symbol id="documentation-icon" viewBox="0 0 21 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="m15.5 13.333 1.533 1.322c.645.555.967.833.967 1.178s-.322.623-.967 1.179L15.5 18.333m-3.333-5-1.534 1.322c-.644.555-.966.833-.966 1.178s.322.623.966 1.179l1.534 1.321"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M17.167 10.836v-4.32c0-1.41 0-2.117-.224-2.68-.359-.906-1.118-1.621-2.08-1.96-.599-.21-1.349-.21-2.848-.21-2.623 0-3.935 0-4.983.369-1.684.591-3.013 1.842-3.641 3.428C3 6.449 3 7.684 3 10.154v2.122c0 2.558 0 3.838.706 4.726q.306.383.713.671c.76.536 1.79.64 3.581.66"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M3 10a2.78 2.78 0 0 1 2.778-2.778c.555 0 1.209.097 1.748-.047.48-.129.854-.503.982-.982.145-.54.048-1.194.048-1.749a2.78 2.78 0 0 1 2.777-2.777"/>
+  </symbol>
+  <symbol id="github-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M9.356 1.85C5.05 1.85 1.57 5.356 1.57 9.694a7.84 7.84 0 0 0 5.324 7.44c.387.079.528-.168.528-.376 0-.182-.013-.805-.013-1.454-2.165.467-2.616-.935-2.616-.935-.349-.91-.864-1.143-.864-1.143-.71-.48.051-.48.051-.48.787.051 1.2.805 1.2.805.695 1.194 1.817.857 2.268.649.064-.507.27-.857.49-1.052-1.728-.182-3.545-.857-3.545-3.87 0-.857.31-1.558.8-2.104-.078-.195-.349-1 .077-2.078 0 0 .657-.208 2.14.805a7.5 7.5 0 0 1 1.946-.26c.657 0 1.328.092 1.946.26 1.483-1.013 2.14-.805 2.14-.805.426 1.078.155 1.883.078 2.078.502.546.799 1.247.799 2.104 0 3.013-1.818 3.675-3.558 3.87.284.247.528.714.528 1.454 0 1.052-.012 1.896-.012 2.156 0 .208.142.455.528.377a7.84 7.84 0 0 0 5.324-7.441c.013-4.338-3.48-7.844-7.773-7.844" clip-rule="evenodd"/>
+  </symbol>
+  <symbol id="social-icon" viewBox="0 0 20 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M12.5 6.667a4.167 4.167 0 1 0-8.334 0 4.167 4.167 0 0 0 8.334 0"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M2.5 16.667a5.833 5.833 0 0 1 8.75-5.053m3.837.474.513 1.035c.07.144.257.282.414.309l.93.155c.596.1.736.536.307.965l-.723.73a.64.64 0 0 0-.152.531l.207.903c.164.715-.213.991-.84.618l-.872-.52a.63.63 0 0 0-.577 0l-.872.52c-.624.373-1.003.094-.84-.618l.207-.903a.64.64 0 0 0-.152-.532l-.723-.729c-.426-.43-.289-.864.306-.964l.93-.156a.64.64 0 0 0 .412-.31l.513-1.034c.28-.562.735-.562 1.012 0"/>
+  </symbol>
+  <symbol id="x-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M1.893 1.98c.052.072 1.245 1.769 2.653 3.77l2.892 4.114c.183.261.333.48.333.486s-.068.089-.152.183l-.522.593-.765.867-3.597 4.087c-.375.426-.734.834-.798.905a1 1 0 0 0-.118.148c0 .01.236.017.664.017h.663l.729-.83c.4-.457.796-.906.879-.999a692 692 0 0 0 1.794-2.038c.034-.037.301-.34.594-.675l.551-.624.345-.392a7 7 0 0 1 .34-.374c.006 0 .93 1.306 2.052 2.903l2.084 2.965.045.063h2.275c1.87 0 2.273-.003 2.266-.021-.008-.02-1.098-1.572-3.894-5.547-2.013-2.862-2.28-3.246-2.273-3.266.008-.019.282-.332 2.085-2.38l2-2.274 1.567-1.782c.022-.028-.016-.03-.65-.03h-.674l-.3.342a871 871 0 0 1-1.782 2.025c-.067.075-.405.458-.75.852a100 100 0 0 1-.803.91c-.148.172-.299.344-.99 1.127-.304.343-.32.358-.345.327-.015-.019-.904-1.282-1.976-2.808L6.365 1.85H1.8zm1.782.91 8.078 11.294c.772 1.08 1.413 1.973 1.425 1.984.016.017.241.02 1.05.017l1.03-.004-2.694-3.766L7.796 5.75 5.722 2.852l-1.039-.004-1.039-.004z" clip-rule="evenodd"/>
+  </symbol>
+</svg>
+
+
+==========================================
+FILE: ./public/favicon.svg
+==========================================
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="46" fill="none" viewBox="0 0 48 46"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z" style="fill:#863bff;fill:color(display-p3 .5252 .23 1);fill-opacity:1"/><mask id="a" width="48" height="46" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M25.842 44.938c-.664.844-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.183c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.498 0-3.579-1.842-3.579H1.133c-.92 0-1.456-1.04-.92-1.787L9.91.473c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.578 1.842 3.578h11.377c.943 0 1.473 1.088.89 1.832L25.843 44.94z" style="fill:#000;fill-opacity:1"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#ede6ff" rx="5.508" ry="14.704" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -4.47 31.516)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#ede6ff" rx="10.399" ry="29.851" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -39.328 7.883)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#7e14ff" rx="5.508" ry="30.487" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -25.913 -14.639)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -32.644 -3.334)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -34.34 30.47)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#ede6ff" rx="14.072" ry="22.078" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="rotate(93.35 24.506 48.493)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx=".387" cy="8.972" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(39.51 .387 8.972)"/></g><g filter="url(#k)"><ellipse cx="47.523" cy="-6.092" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 47.523 -6.092)"/></g><g filter="url(#l)"><ellipse cx="41.412" cy="6.333" fill="#47bfff" rx="5.971" ry="9.665" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 41.412 6.333)"/></g><g filter="url(#m)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#n)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#o)"><ellipse cx="35.651" cy="29.907" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 35.651 29.907)"/></g><g filter="url(#p)"><ellipse cx="38.418" cy="32.4" fill="#47bfff" rx="5.971" ry="15.297" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 38.418 32.4)"/></g></g><defs><filter id="b" width="60.045" height="41.654" x="-19.77" y="16.149" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-54.613" y="-7.533" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-49.64" y="2.03" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-45.045" y="20.029" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-43.513" y="21.178" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="15.756" y="-17.901" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-27.636" y="-22.853" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="20.116" y="-38.415" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="24.641" y="-11.323" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="8.244" y="-2.416" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="18.713" y="10.588" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter></defs></svg>
+
+==========================================
+FILE: ./jsconfig.json
+==========================================
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] }
+  }
+}
+
+
+==========================================
+FILE: ./.github/workflows/deploy.yml
+==========================================
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: touch out/.nojekyll   # Prevent Jekyll from ignoring _next directory
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+==========================================
+FILE: ./package.json
+==========================================
+{
+  "name": "crm-booking-frontend",
+  "private": true,
+  "version": "0.1.0",
+   "scripts": {
+    "dev": "next dev -p 5173",
+    "build": "next build",
+    "start": "next start -p 5173",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.15"
+  }
+}
+
+
+==========================================
+FILE: ./project-code.txt
+==========================================
+
+
+==========================================
+FILE: ./src/views/Dashboard.jsx
+==========================================
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import api from '@/api/client';
+
+export default function Dashboard() {
+  const [counts, setCounts] = useState({ menu: 0, lowStock: 0, pendingPOs: 0 });
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const [menu, low, pos] = await Promise.all([
+        api.get('/menu'),
+        api.get('/inventory/low-stock'),
+        api.get('/purchase-orders'),
+      ]);
+      if (cancelled) return;
+      setCounts({
+        menu: menu.data.length,
+        lowStock: low.data.length,
+        pendingPOs: pos.data.filter((p) => p.status === 'pending_supplier').length,
+      });
+    })().catch(console.error);
+    return () => { cancelled = true; };
+  }, []);
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p className="muted">One restaurant, one kitchen. Five workflows.</p>
+      <div className="grid">
+        <Link href="/menu" className="card stat">
+          <span className="stat-num">{counts.menu}</span>
+          <span className="stat-label">Menu items</span>
+        </Link>
+        <Link href="/inventory" className="card stat">
+          <span className="stat-num warn">{counts.lowStock}</span>
+          <span className="stat-label">Low-stock materials</span>
+        </Link>
+        <Link href="/purchase-orders" className="card stat">
+          <span className="stat-num">{counts.pendingPOs}</span>
+          <span className="stat-label">Pending POs</span>
+        </Link>
+        <Link href="/orders" className="card stat">
+          <span className="stat-num">â†’</span>
+          <span className="stat-label">Look up an order</span>
+        </Link>
+        <Link href="/customers" className="card stat">
+          <span className="stat-num">â†’</span>
+          <span className="stat-label">Look up a customer</span>
+        </Link>
+      </div>
+      <div className="card tip">
+        <strong>Demo tip:</strong> try workflow 5 â€” go to Customers, search phone&nbsp;
+        <code>+911111111111</code>, add 100 loyalty points.
+      </div>
+    </div>
+  );
+}
+
+
+==========================================
+FILE: ./src/views/PurchaseOrders.jsx
+==========================================
+'use client';
+
+import { useEffect, useState } from 'react';
+import api from '../api/client';
+
+export default function PurchaseOrders() {
+  const [pos, setPOs] = useState([]);
+  const [materials, setMaterials] = useState([]);
+  const [form, setForm] = useState({ supplier: 'FreshMeat', material_id: 'chicken', qty: 10, unit: 'kg' });
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  async function load() {
+    try {
+      const [p, inv] = await Promise.all([api.get('/purchase-orders'), api.get('/inventory')]);
+      setPOs(p.data);
+      setMaterials(inv.data);
+      if (inv.data.length && !inv.data.some((m) => m.material_id === form.material_id)) {
+        setForm((f) => ({ ...f, material_id: inv.data[0].material_id, unit: inv.data[0].unit }));
+      }
+    } catch (err) { setError(err.response?.data?.error || err.message); }
+  }
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function create(e) {
+    e.preventDefault();
+    setBusy(true); setError('');
+    try {
+      await api.post('/purchase-orders', { ...form, qty: Number(form.qty) });
+      await load();
+    } catch (err) { setError(err.response?.data?.error || err.message); }
+    finally { setBusy(false); }
+  }
+
+  async function approve(po, approved) {
+    try {
+      const { data } = await api.patch(`/purchase-orders/${po.po_id}/approve`, { approved });
+      await load();
+      if (approved) {
+        alert(`Approved. Inventory updated: ${data.inventory_updated ? 'yes' : 'no (already processed)'}`);
+      }
+    } catch (err) { alert(err.response?.data?.error || err.message); }
+  }
+
+  function pickMaterial(id) {
+    const m = materials.find((x) => x.material_id === id);
+    setForm((f) => ({ ...f, material_id: id, unit: m?.unit || f.unit }));
+  }
+
+  return (
+    <div>
+      <h1>Purchase Orders</h1>
+      <p className="muted">Create a PO, then approve it â€” inventory is credited atomically (Workflows 2 &amp; 3).</p>
+      {error && <div className="alert error">{error}</div>}
+
+      <form className="card inline-form" onSubmit={create}>
+        <label>Supplier
+          <input value={form.supplier} onChange={(e) => setForm({ ...form, supplier: e.target.value })} />
+        </label>
+        <label>Material
+          <select value={form.material_id} onChange={(e) => pickMaterial(e.target.value)}>
+            {materials.map((m) => (
+              <option key={m.material_id} value={m.material_id}>{m.name} ({m.material_id})</option>
+            ))}
+          </select>
+        </label>
+        <label>Qty
+          <input type="number" step="0.01" value={form.qty} onChange={(e) => setForm({ ...form, qty: e.target.value })} />
+        </label>
+        <label>Unit
+          <input value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} />
+        </label>
+        <button className="btn btn-primary" disabled={busy}>{busy ? 'â€¦' : 'Create PO'}</button>
+      </form>
+
+      <table className="table">
+        <thead>
+          <tr><th>PO</th><th>Supplier</th><th>Material</th><th>Qty</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          {pos.map((p) => (
+            <tr key={p.po_id}>
+              <td className="mono">{p.po_id}</td>
+              <td>{p.supplier}</td>
+              <td>{p.material_id}</td>
+              <td>{p.qty} {p.unit}</td>
+              <td><span className={`pill ${p.status}`}>{p.status}</span></td>
+              <td>
+                {p.status === 'pending_supplier' ? (
+                  <>
+                    <button className="btn btn-small btn-primary" onClick={() => approve(p, true)}>Approve</button>{' '}
+                    <button className="btn btn-small btn-danger" onClick={() => approve(p, false)}>Reject</button>
+                  </>
+                ) : <span className="muted">â€”</span>}
+              </td>
+            </tr>
+          ))}
+          {pos.length === 0 && (
+            <tr><td colSpan="6" className="muted">No purchase orders yet.</td></tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Orders.jsx
+==========================================
+'use client';
+
+import { useState } from 'react';
+import api from '../api/client';
+
+export default function Orders() {
+  const [orderId, setOrderId] = useState('ORD-1234');
+  const [order, setOrder] = useState(null);
+  const [error, setError] = useState('');
+  const [note, setNote] = useState('');
+  const [noteMsg, setNoteMsg] = useState('');
+
+  async function lookup(e) {
+    if (e) e.preventDefault();
+    setError(''); setOrder(null); setNoteMsg('');
+    try {
+      const { data } = await api.get(`/orders/${orderId}`);
+      setOrder(data);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    }
+  }
+
+  async function cancel() {
+    setError(''); setNoteMsg('');
+    try {
+      const { data } = await api.post(`/orders/${orderId}/cancel`);
+      setOrder({ ...order, status: data.status });
+    } catch (err) {
+      const status = err.response?.status;
+      const msg = err.response?.data?.error || err.message;
+      setError(msg);
+      if (status === 409) {
+        // Branch: log a support note
+        try {
+          await api.post('/support-notes', {
+            order_id: orderId,
+            note: `Cancel rejected (${msg}). Customer informed; escalation logged.`,
+          });
+          setNoteMsg('Cancellation was rejected â€” a support note was logged automatically.');
+        } catch (noteErr) {
+          setNoteMsg('Could not log support note: ' + noteErr.message);
+        }
+      }
+    }
+  }
+
+  async function addNote(e) {
+    e.preventDefault();
+    setNoteMsg('');
+    try {
+      await api.post('/support-notes', { order_id: orderId, note });
+      setNoteMsg('Support note added.');
+      setNote('');
+    } catch (err) {
+      setNoteMsg(err.response?.data?.error || err.message);
+    }
+  }
+
+  return (
+    <div>
+      <h1>Orders</h1>
+      <p className="muted">Look up an order and try cancelling. Shipped orders return 409 and auto-log a support note (Workflow 4).</p>
+
+      <form className="inline-form" onSubmit={lookup}>
+        <input
+          className="mono"
+          value={orderId}
+          onChange={(e) => setOrderId(e.target.value)}
+          placeholder="ORD-1234"
+        />
+        <button className="btn btn-primary">Look up</button>
+        <span className="muted small">Try <code>ORD-1234</code> (placed) or <code>ORD-1235</code> (shipped).</span>
+      </form>
+
+      {error && <div className="alert error">{error}</div>}
+      {noteMsg && <div className="alert info">{noteMsg}</div>}
+
+      {order && (
+        <div className="card">
+          <h2 className="mono">{order.order_id}</h2>
+          <p>Customer: <strong className="mono">{order.customer_id}</strong> &nbsp;Â·&nbsp; Status: <span className={`pill ${order.status}`}>{order.status}</span></p>
+          <h3>Items</h3>
+          <ul>
+            {(order.items || []).map((it, i) => (
+              <li key={i}><code>{it.item_id}</code> Ã— {it.qty}</li>
+            ))}
+          </ul>
+          <div className="row">
+            <button className="btn btn-danger" onClick={cancel}>Cancel order</button>
+          </div>
+          <hr />
+          <h3>Add support note</h3>
+          <form className="inline-form" onSubmit={addNote}>
+            <input
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Customer calledâ€¦"
+              style={{ minWidth: '22rem' }}
+            />
+            <button className="btn" disabled={!note.trim()}>Add note</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Login.jsx
+==========================================
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useAuth } from '@/api/AuthContext';
+
+export default function Login() {
+  const { login } = useAuth();
+  const router = useRouter();
+  
+  const [email, setEmail] = useState('admin@crm.local');
+  const [password, setPassword] = useState('secret123');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  async function submit(e) {
+    e.preventDefault();
+    setError(''); setBusy(true);
+    try {
+      await login(email, password);
+      router.push('/');
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="login-wrap">
+      <form className="card login-card" onSubmit={submit}>
+        <h1>ğŸ› Ref CRM</h1>
+        <p className="muted">Sign in to continue</p>
+
+        <label>
+          Email
+          <input 
+            type="email"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            autoComplete="username" 
+            required 
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            required
+          />
+        </label>
+        
+        {error && <div className="alert error">{error}</div>}
+        
+        <button className="btn btn-primary" disabled={busy}>
+          {busy ? 'â€¦' : 'Sign in'}
+        </button>
+
+        <Link 
+          href="/register" 
+          className="btn btn-ghost" 
+          style={{ textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: 10 }}
+        >
+          Need an account? Register
+        </Link>
+      </form>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Register.jsx
+==========================================
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useAuth } from '@/api/AuthContext';
+
+export default function Register() {
+  const { sendOtp } = useAuth();
+  const router = useRouter();
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  async function submit(e) {
+    e.preventDefault();
+    setError(''); setBusy(true);
+    try {
+      // Trigger the OTP email from the backend
+      await sendOtp(email);
+      // Move to the OTP verification screen, passing the email in the URL
+      router.push(`/verify-otp?email=${encodeURIComponent(email)}`);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="login-wrap">
+      <form className="card login-card" onSubmit={submit}>
+        <h1>ğŸ› Create Account</h1>
+        <p className="muted">Register to start using the CRM</p>
+
+        <label>
+          Email
+          <input 
+            type="email"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            autoComplete="username" 
+            placeholder="you@example.com"
+            required 
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            required
+            minLength={6}
+            placeholder="At least 6 characters"
+          />
+        </label>
+        
+        {error && <div className="alert error">{error}</div>}
+        
+        <button className="btn btn-primary" disabled={busy}>
+          {busy ? 'Sending Codeâ€¦' : 'Send Verification Code'}
+        </button>
+
+        <Link href="/login" className="btn btn-ghost" style={{ textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: 10 }}>
+          â† Back to Sign in
+        </Link>
+      </form>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Demos.jsx
+==========================================
+"use client";
+
+import Link from "next/link";
+import { getAllDemos } from "@/demos";
+
+export default function Demos() {
+  const demos = getAllDemos();
+
+  const features = [
+    {
+      icon: "â±ï¸",
+      title: "10-Minute Setup",
+      desc: "Stop building AI infrastructure from scratch. Wire up a production-grade workflow in a single afternoon.",
+    },
+    {
+      icon: "ğŸ’¸",
+      title: "Zero AI Hires Required",
+      desc: "Your existing product team can build and launch this. No machine learning engineers, no new AI team needed.",
+    },
+    {
+      icon: "ğŸ›¡ï¸",
+      title: "Zero Maintenance Debt",
+      desc: "We sit completely outside your codebase. Change your database or your UIâ€”your AI won't break.",
+    },
+    {
+      icon: "ğŸ–¥ï¸",
+      title: "Live Admin Agility",
+      desc: "Change 99% of agent logic, thresholds, and prompts live via our Admin UI. No code deployments required.",
+    },
+    {
+      icon: "ğŸ¨",
+      title: "Generative UI",
+      desc: "If your API needs a date range, the AI generates a calendar picker right in the chat. No frontend dev required.",
+    },
+    {
+      icon: "ğŸ“ˆ",
+      title: "Instant Fan-Out",
+      desc: "Maintain one base agent and instantly deploy it to 10,000 downstream tenants with fully isolated data.",
+    },
+    {
+      icon: "ğŸ’°",
+      title: "Built-in Billing Engine",
+      desc: "We track usage per tenant. Add your profit margin and automatically bill your customers. Turn AI into a profit center.",
+    },
+    {
+      icon: "ğŸš€",
+      title: "Skip the Custom Build Rabbit Hole",
+      desc: "Think you need to build your own AI agent in-house? Don't waste months of R&D. Prove the ROI with our runtime before you write a single line of custom AI code.",
+    },
+    {
+      icon: "ğŸ§ ",
+      title: "Zero Hallucinations",
+      desc: "We don't rely on an LLM's memory. The agent is grounded in your actual API responses, ensuring 100% accuracy and truth-based answers.",
+    },
+    {
+      icon: "ğŸ”’",
+      title: "Zero-Retention Privacy",
+      desc: "We don't pull your data into our system. Everything runs at the boundary. Data is only saved if explicitly configured via the Admin UI for debugging.",
+    },
+    {
+      icon: "ğŸ•µï¸â€â™‚ï¸",
+      title: "Full Node-Level Traceability",
+      desc: "Complete visibility into every workflow. See exactly which node was hit, the payload sent, and the response returned for a perfect audit trail.",
+    },
+    {
+      icon: "ğŸ¯",
+      title: "Your APIs as the Source of Truth",
+      desc: "The AI doesn't guess. It fetches live data directly from your REST endpoints, guaranteeing users only see what they are authorized to see.",
+    },
+  ];
+
+  return (
+    <div style={{ padding: "clamp(24px, 5vw, 64px)", maxWidth: "1200px", margin: "0 auto", color: "#f8fafc" }}>
+      
+      {/* â­ 1. HERO SECTION: The Hook */}
+      <div style={{ textAlign: "center", marginBottom: "56px", marginTop: "32px" }}>
+        <div style={{ 
+          display: "inline-block", padding: "6px 14px", 
+          background: "rgba(59, 130, 246, 0.15)",
+          color: "#60a5fa", fontWeight: "700", fontSize: "12px", 
+          borderRadius: "100px", marginBottom: "20px", letterSpacing: "0.05em",
+          border: "1px solid rgba(59, 130, 246, 0.3)"
+        }}>
+          THE SAGEION RUNTIME
+        </div>
+        <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "800", margin: "0 0 20px 0", color: "#f8fafc", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          Stop building AI infrastructure.<br/>Start shipping AI features.
+        </h1>
+        <p style={{ margin: "0 auto", fontSize: "18px", color: "#94a3b8", maxWidth: "720px", lineHeight: "1.6" }}>
+          The framework trap requires months of engineering and brittle code. Sageion gives you a production runtime in minutes. Pick a live workflow below to see it in action.
+        </p>
+      </div>
+
+      {/* â­ 2. VALUE PROPS: The 12-Card Grid */}
+      <div style={{ 
+        display: "grid", 
+        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", 
+        gap: "20px", 
+        marginBottom: "64px" 
+      }}>
+        {features.map((prop, i) => (
+          <div key={i} style={{ 
+            padding: "24px", 
+            background: "#1e293b",
+            border: "1px solid #334155", 
+            borderRadius: "12px", 
+            boxShadow: "0 4px 6px -1px rgba(0,0,0,0.2)",
+          }}>
+            <div style={{ fontSize: "28px", marginBottom: "14px" }}>{prop.icon}</div>
+            <div style={{ fontSize: "16px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>
+              {prop.title}
+            </div>
+            <div style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.6" }}>
+              {prop.desc}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* â­ 3. DEMO CARDS: The Interactive Offer */}
+      <div style={{ marginBottom: "80px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+          <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
+            Explore the Interactive Workflows
+          </h2>
+          <div style={{ height: "1px", background: "#334155", flex: 1 }} />
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {demos.map((d) => (
+            <Link
+              key={d.id}
+              href={`/demos/${d.id}`}
+              style={{ textDecoration: "none", display: "block" }}
+            >
+              <div style={{ 
+                background: "#1e293b", border: "1px solid #334155", borderRadius: "12px", 
+                padding: "28px", transition: "all 0.2s ease", cursor: "pointer",
+                display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.borderColor = "#3b82f6"; e.currentTarget.style.boxShadow = "0 12px 24px rgba(59,130,246,0.15)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseOut={(e) => { e.currentTarget.style.borderColor = "#334155"; e.currentTarget.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)"; e.currentTarget.style.transform = "translateY(0)"; }}
+              >
+                <div style={{ flex: 1, minWidth: "280px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "10px" }}>
+                    <h3 style={{ fontSize: "22px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
+                      {d.name}
+                    </h3>
+                    {d.status === "active" && (
+                      <span style={{ fontSize: "12px", padding: "3px 10px", background: "rgba(16, 185, 129, 0.15)", color: "#34d399", fontWeight: "700", borderRadius: "100px", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
+                        Live Sandbox
+                      </span>
+                    )}
+                  </div>
+                  <p style={{ fontSize: "15px", color: "#94a3b8", margin: 0, lineHeight: "1.6", maxWidth: "700px" }}>
+                    {d.description}
+                  </p>
+                </div>
+                
+                <div style={{ 
+                  flexShrink: 0, display: "flex", alignItems: "center", gap: "8px", 
+                  color: "#ffffff", fontWeight: "600", fontSize: "15px", 
+                  background: "#3b82f6", padding: "12px 24px", borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(59,130,246,0.3)"
+                }}>
+                  Launch Demo â†’
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* â­ 4. THE TWO-PART BOTTOM SELL */}
+      <div style={{ 
+        background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)", 
+        borderRadius: "20px", padding: "clamp(32px, 5vw, 56px)", 
+        border: "1px solid #334155",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+      }}>
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", 
+          gap: "48px",
+          alignItems: "center"
+        }}>
+          
+          {/* Left Column: The Immediate Hook (Custom Demo) */}
+          <div>
+            <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: "800", margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2 }}>
+              Want this for your CRM?
+            </h2>
+            <p style={{ fontSize: "16px", color: "#cbd5e1", margin: "0 0 24px 0", lineHeight: "1.6" }}>
+              We built this against a reference CRM, but yours can look exactly like your product. Share sandbox credentials for one flow, and we'll build a live, customized demo in <strong>7â€“14 days</strong>.
+            </p>
+            <a 
+              href="mailto:founders@sageion.com"
+              style={{ 
+                background: "#3b82f6", color: "#ffffff", padding: "14px 28px", 
+                borderRadius: "8px", fontWeight: "700", fontSize: "16px", 
+                textDecoration: "none", display: "inline-block",
+                boxShadow: "0 4px 12px rgba(59,130,246,0.3)", transition: "all 0.2s"
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+              onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+            >
+              Book a 15-Min Demo â†’
+            </a>
+            <div style={{ fontSize: "13px", color: "#64748b", marginTop: "12px", fontWeight: "500" }}>
+              No integration sprint. No AI team required.
+            </div>
+          </div>
+
+          {/* Vertical Divider (hidden on mobile) */}
+          <div style={{ display: "none", width: "1px", height: "100%", background: "rgba(255,255,255,0.1)", margin: "0 auto" }} className="desktop-divider" />
+
+          {/* Right Column: The Long-Term Goldmine (White-label) */}
+          <div>
+            <div style={{ 
+              display: "inline-block", padding: "4px 12px", background: "rgba(59,130,246,0.2)", 
+              color: "#60a5fa", fontWeight: "700", fontSize: "12px", 
+              borderRadius: "100px", marginBottom: "16px", letterSpacing: "0.05em"
+            }}>
+              THE GOLDMINE ADD-ON
+            </div>
+            <h3 style={{ fontSize: "20px", fontWeight: "700", margin: "0 0 12px 0", color: "#f8fafc" }}>
+              Turn your CRM into an AI profit center.
+            </h3>
+            <p style={{ fontSize: "15px", color: "#cbd5e1", margin: 0, lineHeight: "1.6" }}>
+              We provide the runtime, the generative UI, and the per-tenant billing engine. You simply add your profit margin and immediately start selling this as a premium white-label add-on to your restaurant customers.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <style jsx>{`
+        @media (min-width: 768px) {
+          .desktop-divider {
+            display: block !important;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Customers.jsx
+==========================================
+'use client';
+
+import { useState } from 'react';
+import api from '../api/client';
+
+export default function Customers() {
+  const [phone, setPhone] = useState('+911111111111');
+  const [customer, setCustomer] = useState(null);
+  const [error, setError] = useState('');
+  const [newCust, setNewCust] = useState({ name: '', phone: '' });
+  const [createMode, setCreateMode] = useState(false);
+  const [delta, setDelta] = useState(100);
+  const [reason, setReason] = useState('birthday');
+  const [msg, setMsg] = useState('');
+
+  async function search(e) {
+    if (e) e.preventDefault();
+    setError(''); setMsg(''); setCustomer(null); setCreateMode(false);
+    try {
+      const { data } = await api.get(`/customers?phone=${encodeURIComponent(phone)}`);
+      setCustomer(data);
+    } catch (err) {
+      const status = err.response?.status;
+      if (status === 404) {
+        setCreateMode(true);
+        setNewCust({ name: '', phone });
+        setMsg('No customer with this phone â€” fill in a name to register.');
+      } else {
+        setError(err.response?.data?.error || err.message);
+      }
+    }
+  }
+
+  async function create(e) {
+    e.preventDefault();
+    setError(''); setMsg('');
+    try {
+      const { data } = await api.post('/customers', newCust);
+      setCustomer(data);
+      setCreateMode(false);
+      setMsg(`Created ${data.customer_id}.`);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    }
+  }
+
+  async function adjustPoints(e) {
+    e.preventDefault();
+    setError(''); setMsg('');
+    try {
+      const { data } = await api.patch(`/customers/${customer.customer_id}/loyalty-points`, {
+        delta: Number(delta),
+        reason,
+      });
+      setCustomer({ ...customer, loyalty_points: data.new_total });
+      setMsg(`Points updated to ${data.new_total}.`);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    }
+  }
+
+  return (
+    <div>
+      <h1>Customers</h1>
+      <p className="muted">Search by phone. If not found, register, then add loyalty points (Workflow 5).</p>
+
+      <form className="inline-form" onSubmit={search}>
+        <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+911111111111" />
+        <button className="btn btn-primary">Search</button>
+      </form>
+
+      {error && <div className="alert error">{error}</div>}
+      {msg && <div className="alert info">{msg}</div>}
+
+      {createMode && (
+        <form className="card" onSubmit={create}>
+          <h3>Register new customer</h3>
+          <label>Name
+            <input value={newCust.name} onChange={(e) => setNewCust({ ...newCust, name: e.target.value })} required />
+          </label>
+          <label>Phone
+            <input value={newCust.phone} onChange={(e) => setNewCust({ ...newCust, phone: e.target.value })} required />
+          </label>
+          <button className="btn btn-primary">Create</button>
+        </form>
+      )}
+
+      {customer && (
+        <div className="card">
+          <h2>{customer.name}</h2>
+          <p className="mono muted">{customer.customer_id} Â· {customer.phone}</p>
+          <p className="stat-num">{customer.loyalty_points} <span className="stat-label">loyalty points</span></p>
+          <form className="inline-form" onSubmit={adjustPoints}>
+            <label>Delta
+              <input type="number" value={delta} onChange={(e) => setDelta(e.target.value)} />
+            </label>
+            <label>Reason
+              <input value={reason} onChange={(e) => setReason(e.target.value)} />
+            </label>
+            <button className="btn btn-primary">Adjust points</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Menu.jsx
+==========================================
+'use client';
+import { useEffect, useState } from 'react';
+import api from '../api/client';
+
+export default function Menu() {
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState('');
+
+  async function load() {
+    try {
+      const { data } = await api.get('/menu');
+      // Guard: if backend returns {items:[â€¦]}, {data:[â€¦]}, or a non-array,
+      // extract the array instead of feeding the raw payload into .map.
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.items)
+          ? data.items
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
+      setItems(list);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+      setItems([]);  // never leave a non-array in state
+    }
+  }
+  useEffect(() => { load(); }, []);
+
+  async function toggle(item) {
+    try {
+      await api.patch(`/menu/${item.item_id}/availability`, { in_stock: !item.in_stock });
+      setItems((prev) =>
+        (Array.isArray(prev) ? prev : []).map((i) =>
+          i.item_id === item.item_id ? { ...i, in_stock: !i.in_stock } : i
+        )
+      );
+    } catch (err) {
+      alert(err.response?.data?.error || err.message);
+    }
+  }
+
+  return (
+    <div>
+      <h1>Menu</h1>
+      <p className="muted">Flip availability to run <strong>Workflow 1</strong>.</p>
+      {error && <div className="alert error">{error}</div>}
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Item</th><th>Category</th><th>Price</th><th>Recipe</th><th>In stock</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((i) => (
+            <tr key={i.item_id}>
+              <td><strong>{i.name}</strong><br/><span className="mono muted">{i.item_id}</span></td>
+              <td>{i.category}</td>
+              <td>â‚¹{Number(i.price).toFixed(2)}</td>
+              <td className="mono small">
+                {(i.recipe || []).map((r) => `${r.material_id}Ã—${r.qty}`).join(', ') || 'â€”'}
+              </td>
+              <td>
+                <span className={i.in_stock ? 'pill ok' : 'pill off'}>
+                  {i.in_stock ? 'In stock' : 'Out'}
+                </span>
+              </td>
+              <td>
+                <button className="btn btn-small" onClick={() => toggle(i)}>
+                  Mark {i.in_stock ? 'out' : 'in'}
+                </button>
+              </td>
+            </tr>
+          ))}
+          {items.length === 0 && !error && (
+            <tr><td colSpan="6" className="muted">No menu items loaded.</td></tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
+==========================================
+FILE: ./src/views/VerifyOtp.jsx
+==========================================
+'use client';
+
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from '@/api/AuthContext';
+
+// Next.js requires useSearchParams to be wrapped in Suspense
+function VerifyOtpContent() {
+  const { register } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const email = searchParams.get('email') || '';
+  
+  const [password, setPassword] = useState(''); // We need the password again to create the account
+  const [otp, setOtp] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  // If someone lands here directly without an email, kick them back to register
+  useEffect(() => {
+    if (!email) router.replace('/register');
+  }, [email, router]);
+
+  async function submit(e) {
+    e.preventDefault();
+    setError(''); setBusy(true);
+    try {
+      await register(email, password, otp);
+      router.push('/');
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="login-wrap">
+      <form className="card login-card" onSubmit={submit}>
+        <h1>ğŸ› Verify Email</h1>
+        <p className="muted">We sent a 6-digit code to <strong>{email}</strong></p>
+
+        <label>
+          Verification Code
+          <input 
+            value={otp} 
+            onChange={(e) => setOtp(e.target.value)} 
+            placeholder="000000" 
+            maxLength={6}
+            autoFocus
+            required
+            style={{ letterSpacing: '0.5em', textAlign: 'center', fontSize: '1.2em', fontFamily: 'monospace' }}
+          />
+        </label>
+
+        <label>
+          Confirm Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Re-enter your password"
+            required
+            minLength={6}
+          />
+        </label>
+        
+        {error && <div className="alert error">{error}</div>}
+        
+        <button className="btn btn-primary" disabled={busy || otp.length !== 6 || !password}>
+          {busy ? 'Verifyingâ€¦' : 'Verify & Create Account'}
+        </button>
+
+        <button 
+          type="button" 
+          className="btn btn-ghost" 
+          onClick={() => router.push('/register')}
+          style={{ marginTop: 10 }}
+        >
+          Didn't get a code? Go back
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default function VerifyOtp() {
+  return (
+    <Suspense fallback={<div className="login-wrap">Loadingâ€¦</div>}>
+      <VerifyOtpContent />
+    </Suspense>
+  );
+}
+
+==========================================
+FILE: ./src/views/DemoDetail.jsx
+==========================================
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { getDemo } from "@/demos";
+
+const METHOD_COLOR = {
+  GET: { bg: "#dcfce7", fg: "#166534", border: "#bbf7d0" },
+  POST: { bg: "#dbeafe", fg: "#1e40af", border: "#bfdbfe" },
+  PATCH: { bg: "#fef3c7", fg: "#92400e", border: "#fde68a" },
+  PUT: { bg: "#fef3c7", fg: "#92400e", border: "#fde68a" },
+  DELETE: { bg: "#fee2e2", fg: "#991b1b", border: "#fecaca" },
+};
+
+function MethodPill({ method }) {
+  const c = METHOD_COLOR[method] || METHOD_COLOR.GET;
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        padding: "2px 8px",
+        fontSize: 10,
+        fontWeight: 700,
+        letterSpacing: "0.04em",
+        borderRadius: 4,
+        background: c.bg,
+        color: c.fg,
+        border: `1px solid ${c.border}`,
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+        flexShrink: 0,
+        minWidth: 52,
+        textAlign: "center",
+      }}
+    >
+      {method}
+    </span>
+  );
+}
+
+export default function DemoDetail({ id }) {
+  const router = useRouter();
+  const demo = getDemo(id); 
+  const [openAccordion, setOpenAccordion] = useState(0);
+
+  if (!demo) {
+    return (
+      <div style={{ padding: "2rem" }}>
+        <h1>Demo not found</h1>
+        <p className="muted">
+          No demo with id <code>{id}</code>.
+        </p>
+        <Link
+          href="/demos"
+          className="btn btn-ghost"
+          style={{ marginBottom: 24, display: "inline-block" }}
+        >
+          â† Back
+        </Link>
+      </div>
+    );
+  }
+
+  const tryMe = () => {
+    localStorage.setItem("active_demo", id);
+    // Navigate to the first step's route (or inventory by default for this demo)
+    window.location.assign("/owner/inventory");
+  };
+
+  return (
+    <div style={{ padding: "clamp(24px, 4vw, 64px)" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        {/* ============================================
+            A. HEADER â€” title, tagline, top CTA
+            ============================================ */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 16,
+            marginBottom: 28,
+            flexWrap: "wrap",
+          }}
+        >
+          <div>
+            <Link
+              href="/demos"
+              className="btn btn-ghost"
+              style={{
+                fontSize: 13,
+                padding: "6px 0",
+                marginBottom: 8,
+                display: "inline-block",
+              }}
+            >
+              â† All demos
+            </Link>
+            <h1
+              style={{
+                margin: 0,
+                fontSize: "clamp(22px, 3vw, 30px)",
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.name}
+            </h1>
+            <p
+              className="muted"
+              style={{
+                margin: "8px 0 0 0",
+                fontSize: 15,
+                lineHeight: 1.5,
+                maxWidth: 720,
+              }}
+            >
+              {demo.description}
+            </p>
+          </div>
+          {/* â­ UPDATED CTA BUTTON */}
+          <button
+            className="btn btn-primary"
+            onClick={tryMe}
+            style={{
+              padding: "12px 24px",
+              fontSize: 15,
+              fontWeight: 600,
+              flexShrink: 0,
+            }}
+          >
+            Launch Interactive Demo â†’
+          </button>
+        </div>
+
+        {/* ============================================
+            B. HERO â€” Video (left) + Workflows (right)
+            ============================================ */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1.25fr) minmax(0, 1fr)",
+            gap: 24,
+            marginBottom: 32,
+          }}
+          className="hero-grid"
+        >
+          {/* B1 â€” VIDEO COLUMN */}
+          {demo.buildWalkthrough && (
+            <div
+              style={{
+                padding: "20px",
+                background: "var(--surface)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius)",
+                boxShadow: "var(--shadow)",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div style={{ marginBottom: 14 }}>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 4,
+                  }}
+                >
+                  Build walkthrough
+                </div>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: 18,
+                    lineHeight: 1.3,
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {demo.buildWalkthrough.title}
+                </h2>
+                <p
+                  className="muted"
+                  style={{
+                    margin: "6px 0 0 0",
+                    fontSize: 13,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {demo.buildWalkthrough.subtitle}
+                </p>
+              </div>
+
+              {/* Video placeholder */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "16 / 9",
+                  background: "#0f172a",
+                  borderRadius: "var(--radius-sm)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 10,
+                  color: "#cbd5e1",
+                  textAlign: "center",
+                  padding: 20,
+                  marginBottom: 16,
+                }}
+              >
+                {demo.buildWalkthrough.videoUrl ? (
+                  <iframe
+                    src={demo.buildWalkthrough.videoUrl}
+                    title="Build walkthrough"
+                    style={{ width: "100%", height: "100%", border: "none" }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#94a3b8"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+                      <path d="M10 9l5 3-5 3V9z" fill="#94a3b8" />
+                    </svg>
+                    <div
+                      style={{
+                        fontSize: 12.5,
+                        fontWeight: 500,
+                        maxWidth: 380,
+                        lineHeight: 1.5,
+                        color: "#94a3b8",
+                      }}
+                    >
+                      {demo.buildWalkthrough.videoPlaceholder}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Facts as pills */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: 8,
+                  marginBottom: 16,
+                }}
+                className="facts-grid"
+              >
+                {demo.buildWalkthrough.facts.map((f) => (
+                  <div
+                    key={f.label}
+                    style={{
+                      padding: "8px 10px",
+                      background: "var(--surface-2)",
+                      borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--border)",
+                      textAlign: "center",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "var(--text)",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {f.value.split(" ")[0]}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.04em",
+                        color: "var(--text-muted)",
+                        marginTop: 3,
+                      }}
+                    >
+                      {f.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* API list */}
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 8,
+                }}
+              >
+                APIs wired in the agent
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {demo.buildWalkthrough.apis.map((api) => (
+                  <div
+                    key={api.path}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "8px 10px",
+                      background: "var(--surface-2)",
+                      borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--border)",
+                    }}
+                  >
+                    <MethodPill method={api.method} />
+                    <code
+                      style={{
+                        fontSize: 11.5,
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                        color: "var(--text)",
+                        flex: 1,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {api.path}
+                    </code>
+                    <span
+                      className="muted"
+                      style={{
+                        fontSize: 11,
+                        flexShrink: 0,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {api.purpose}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* B2 â€” WORKFLOWS COLUMN */}
+          <div
+            style={{
+              padding: "20px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ marginBottom: 14 }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 4,
+                }}
+              >
+                What the agent does
+              </div>
+              <h2
+                style={{
+                  margin: 0,
+                  fontSize: 18,
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Inventory workflows covered
+              </h2>
+              <p
+                className="muted"
+                style={{
+                  margin: "6px 0 0 0",
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                }}
+              >
+                Three REST calls, one conversation. Click any step.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-sm)",
+                overflow: "hidden",
+              }}
+            >
+              {(demo.workflows || []).map((w, i) => {
+                const isOpen = openAccordion === i;
+                return (
+                  <div
+                    key={i}
+                    style={{
+                      borderBottom:
+                        i < demo.workflows.length - 1
+                          ? "1px solid var(--border)"
+                          : "none",
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenAccordion(isOpen ? null : i)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 14px",
+                        background: isOpen
+                          ? "var(--surface-2)"
+                          : "var(--surface)",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: 13.5,
+                        fontWeight: 500,
+                        textAlign: "left",
+                        color: "var(--text)",
+                        transition: "background 0.15s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 20,
+                            height: 20,
+                            borderRadius: "50%",
+                            background: isOpen
+                              ? "var(--text)"
+                              : "var(--surface-2)",
+                            color: isOpen
+                              ? "var(--surface)"
+                              : "var(--text-muted)",
+                            fontSize: 10.5,
+                            fontWeight: 700,
+                            flexShrink: 0,
+                          }}
+                        >
+                          {i + 1}
+                        </span>
+                        {w.title}
+                      </span>
+                      <span
+                        style={{
+                          color: "var(--text-muted)",
+                          transition: "transform 0.2s",
+                          transform: isOpen
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div
+                        style={{
+                          padding: "0 14px 14px 44px",
+                          fontSize: 13,
+                          color: "var(--text-muted)",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {w.content}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ============================================
+            C. PURPOSE â€” two-column "What we do / Why it matters"
+            ============================================ */}
+        {demo.purpose && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: 20,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              marginBottom: 32,
+            }}
+            className="purpose-grid"
+          >
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
+                }}
+              >
+                What we do
+              </div>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "var(--text)",
+                }}
+              >
+                {demo.purpose.whatWeDo}
+              </p>
+            </div>
+            <div
+              className="purpose-divider"
+              style={{ borderLeft: "1px solid var(--border)", paddingLeft: 20 }}
+            >
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
+                }}
+              >
+                Why it matters
+              </div>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "var(--text)",
+                }}
+              >
+                {demo.purpose.whyItMatters}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            D. MOAT BANNER â€” the "so what"
+            ============================================ */}
+        {demo.moat && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "28px 32px",
+              background: "linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)",
+              border: "1px solid #c7d2fe",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "#4338ca",
+                marginBottom: 8,
+              }}
+            >
+              {demo.moat.eyebrow}
+            </div>
+            <h2
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: "clamp(20px, 2.5vw, 26px)",
+                lineHeight: 1.25,
+                color: "#1e1b4b",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.moat.headline}
+            </h2>
+            <p
+              style={{
+                margin: "0 0 24px 0",
+                fontSize: 14.5,
+                lineHeight: 1.6,
+                color: "#3730a3",
+                maxWidth: 800,
+              }}
+            >
+              {demo.moat.subhead}
+            </p>
+
+            {/* Funnel */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 24,
+              }}
+              className="funnel-grid"
+            >
+              {(() => {
+                const d = demo.moat.scaleDiagram;
+                const items = [d.base, d.inherited, d.overrides, d.pushes];
+                const arrows = ["â†’", "â†’", "â†’"];
+                const nodes = [];
+                items.forEach((item, i) => {
+                  nodes.push(
+                    <div
+                      key={`n-${i}`}
+                      style={{
+                        padding: "12px 14px",
+                        background: "#ffffff",
+                        border: "1px solid #c7d2fe",
+                        borderRadius: "var(--radius-sm)",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 22,
+                          fontWeight: 700,
+                          color: "#1e1b4b",
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {item.count}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 11,
+                          color: "#4f46e5",
+                          marginTop: 4,
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                    </div>,
+                  );
+                  if (i < arrows.length) {
+                    nodes.push(
+                      <div
+                        key={`a-${i}`}
+                        style={{
+                          fontSize: 18,
+                          color: "#6366f1",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {arrows[i]}
+                      </div>,
+                    );
+                  }
+                });
+                return nodes;
+              })()}
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: 14,
+              }}
+              className="pillars-grid"
+            >
+              {demo.moat.pillars.map((p) => (
+                <div
+                  key={p.step}
+                  style={{
+                    padding: "14px 16px",
+                    background: "#ffffff",
+                    border: "1px solid #c7d2fe",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      color: "#6366f1",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.step}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "#1e1b4b",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      lineHeight: 1.55,
+                      color: "#3730a3",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            E. CONNECTORS â€” extension story
+            ============================================ */}
+        {demo.connectorsSection && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "28px 32px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                marginBottom: 8,
+              }}
+            >
+              {demo.connectorsSection.eyebrow}
+            </div>
+            <h2
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: "clamp(20px, 2.5vw, 24px)",
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+                color: "var(--text)",
+                maxWidth: 820,
+              }}
+            >
+              {demo.connectorsSection.headline}
+            </h2>
+            <p
+              className="muted"
+              style={{
+                margin: "0 0 16px 0",
+                fontSize: 14,
+                lineHeight: 1.65,
+                maxWidth: 900,
+              }}
+            >
+              {demo.connectorsSection.subhead}
+            </p>
+            <p
+              style={{
+                margin: "0 0 24px 0",
+                fontSize: 13.5,
+                lineHeight: 1.65,
+                color: "var(--text)",
+                maxWidth: 900,
+              }}
+            >
+              {demo.connectorsSection.lead}
+            </p>
+
+            {/* Categories grid */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 12,
+                marginBottom: 24,
+              }}
+              className="connector-cat-grid"
+            >
+              {demo.connectorsSection.categories.map((cat) => (
+                <div
+                  key={cat.name}
+                  style={{
+                    padding: "14px 16px",
+                    background: "var(--surface-2)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      marginBottom: 6,
+                    }}
+                  >
+                    <span style={{ fontSize: 18 }}>{cat.icon}</span>
+                    <span
+                      style={{
+                        fontSize: 13.5,
+                        fontWeight: 600,
+                        color: "var(--text)",
+                      }}
+                    >
+                      {cat.name}
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: "var(--text-muted)",
+                      fontFamily:
+                        "ui-monospace, SFMono-Regular, Menlo, monospace",
+                      marginBottom: 8,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {cat.examples}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12.5,
+                      lineHeight: 1.6,
+                      color: "var(--text)",
+                    }}
+                  >
+                    {cat.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Chaining diagram */}
+            <div
+              style={{
+                padding: "18px 20px",
+                background: "var(--surface-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-sm)",
+                marginBottom: 20,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 13.5,
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  marginBottom: 6,
+                }}
+              >
+                {demo.connectorsSection.chaining.title}
+              </div>
+              <p
+                className="muted"
+                style={{
+                  margin: "0 0 14px 0",
+                  fontSize: 13,
+                  lineHeight: 1.6,
+                }}
+              >
+                {demo.connectorsSection.chaining.body}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+              >
+                {demo.connectorsSection.chaining.diagram.map((row, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "10px 12px",
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <code
+                      style={{
+                        fontSize: 12,
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                        color: "var(--text)",
+                        flex: 1,
+                        minWidth: 200,
+                      }}
+                    >
+                      {row.node}
+                    </code>
+                    <span
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: "0.04em",
+                        padding: "2px 8px",
+                        borderRadius: 4,
+                        background: "#dcfce7",
+                        color: "#166534",
+                        border: "1px solid #bbf7d0",
+                      }}
+                    >
+                      {row.status}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 12,
+                        color: "var(--text-muted)",
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                      }}
+                    >
+                      {row.connector}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Auth + positioning */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 16,
+              }}
+              className="connector-meta-grid"
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 6,
+                  }}
+                >
+                  Auth & isolation
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                    color: "var(--text)",
+                  }}
+                >
+                  {demo.connectorsSection.auth}
+                </p>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 6,
+                  }}
+                >
+                  Why it's a runtime, not a framework
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                    color: "var(--text)",
+                  }}
+                >
+                  {demo.connectorsSection.positioning}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            F. PITCH â€” YC one-liner
+            ============================================ */}
+        {demo.pitch && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderLeft: "3px solid #4a7feb",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: 16,
+                fontWeight: 600,
+                color: "var(--text)",
+                lineHeight: 1.4,
+              }}
+            >
+              â€œ{demo.pitch.oneLiner}â€
+            </p>
+            <p
+              className="muted"
+              style={{
+                margin: "10px 0 0 0",
+                fontSize: 13.5,
+                lineHeight: 1.6,
+                color: "var(--text-muted)",
+              }}
+            >
+              {demo.pitch.whyNow}
+            </p>
+          </div>
+        )}
+
+        {/* ============================================
+            G. CAPABILITY AT SCALE
+            ============================================ */}
+        {demo.capabilityAtScale && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                marginBottom: 6,
+              }}
+            >
+              Operate at scale
+            </div>
+            <h3
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: 18,
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.capabilityAtScale.heading}
+            </h3>
+            <p
+              className="muted"
+              style={{
+                margin: "0 0 16px 0",
+                fontSize: 13.5,
+                lineHeight: 1.6,
+              }}
+            >
+              {demo.capabilityAtScale.intro}
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 14,
+              }}
+              className="cap-grid"
+            >
+              {demo.capabilityAtScale.points.map((p) => (
+                <div key={p.title}>
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "var(--text)",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    className="muted"
+                    style={{
+                      fontSize: 13,
+                      lineHeight: 1.6,
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            H. CRM ANGLE â€” slate banner
+            ============================================ */}
+        {demo.crmAngle && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "24px 28px",
+              background: "#0f172a",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              color: "#e2e8f0",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "#94a3b8",
+                marginBottom: 8,
+              }}
+            >
+              For CRM vendors
+            </div>
+            <h3
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: 20,
+                lineHeight: 1.3,
+                color: "#f1f5f9",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.crmAngle.heading}
+            </h3>
+            {demo.crmAngle.intro && (
+              <p
+                style={{
+                  margin: "0 0 20px 0",
+                  fontSize: 13.5,
+                  lineHeight: 1.6,
+                  color: "#94a3b8",
+                  maxWidth: 820,
+                }}
+              >
+                {demo.crmAngle.intro}
+              </p>
+            )}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 16,
+              }}
+              className="crm-grid"
+            >
+              {demo.crmAngle.points.map((p) => (
+                <div
+                  key={p.title}
+                  style={{
+                    padding: "14px 16px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "#f1f5f9",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12.5,
+                      lineHeight: 1.6,
+                      color: "#94a3b8",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            I. REFERENCE CRM â€” amber caveat box
+            ============================================ */}
+        {demo.referenceCrm && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "24px 28px",
+              background: "#fffbeb",
+              borderRadius: "var(--radius)",
+              border: "1px solid #fde68a",
+              borderLeft: "3px solid #f59e0b",
+            }}
+          >
+            {demo.referenceCrm.eyebrow && (
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "#92400e",
+                  marginBottom: 6,
+                }}
+              >
+                {demo.referenceCrm.eyebrow}
+              </div>
+            )}
+            <h3
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: 18,
+                lineHeight: 1.3,
+                color: "#78350f",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.referenceCrm.heading}
+            </h3>
+            <p
+              style={{
+                margin: "0 0 14px 0",
+                fontSize: 14,
+                lineHeight: 1.6,
+                color: "#78350f",
+              }}
+            >
+              {demo.referenceCrm.body}
+            </p>
+
+            {demo.referenceCrm.offer && (
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #fde68a",
+                  borderRadius: "var(--radius-sm)",
+                  marginBottom: 14,
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "#b45309",
+                    marginBottom: 4,
+                  }}
+                >
+                  What we need from you
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13.5,
+                    lineHeight: 1.6,
+                    color: "#78350f",
+                  }}
+                >
+                  {demo.referenceCrm.offer}
+                </p>
+              </div>
+            )}
+
+            {demo.referenceCrm.callout && (
+              <p
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 13.5,
+                  fontWeight: 500,
+                  lineHeight: 1.6,
+                  color: "#92400e",
+                  fontStyle: "italic",
+                }}
+              >
+                {demo.referenceCrm.callout}
+              </p>
+            )}
+
+            {demo.referenceCrm.footnote && (
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 12.5,
+                  lineHeight: 1.5,
+                  color: "#a16207",
+                  paddingTop: 8,
+                  borderTop: "1px dashed #fcd34d",
+                }}
+              >
+                {demo.referenceCrm.footnote}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* ============================================
+            J. FINAL CTA â€” bottom anchor
+            ============================================ */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 12,
+            padding: "32px 24px",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius)",
+            boxShadow: "var(--shadow)",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 16,
+              fontWeight: 600,
+              color: "var(--text)",
+            }}
+          >
+            See it running live
+          </div>
+          <p
+            className="muted"
+            style={{
+              margin: 0,
+              fontSize: 13.5,
+              lineHeight: 1.5,
+              maxWidth: 460,
+            }}
+          >
+            Open the interactive demo and talk to the agent that these three
+            APIs power.
+          </p>
+          {/* â­ UPDATED CTA BUTTON */}
+          <button
+            className="btn btn-primary"
+            onClick={tryMe}
+            style={{
+              padding: "14px 32px",
+              fontSize: 15,
+              fontWeight: 600,
+              marginTop: 4,
+            }}
+          >
+            Launch Interactive Demo â†’
+          </button>
+        </div>
+      </div>
+
+      {/* Responsive tweak */}
+      <style jsx>{`
+        @media (max-width: 900px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .purpose-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .purpose-divider {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid var(--border) !important;
+            padding-top: 20px !important;
+          }
+          .cap-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .crm-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .connector-cat-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .connector-meta-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 700px) {
+          .facts-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+          .funnel-grid {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+          }
+          .pillars-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/views/Inventory.jsx
+==========================================
+'use client';
+
+import { useEffect, useState } from 'react';
+import api from '../api/client';
+
+export default function Inventory() {
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState('');
+
+  async function load() {
+    try {
+      const { data } = await api.get('/inventory');
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.items)
+          ? data.items
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
+      setItems(list);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+      setItems([]);
+    }
+  }
+  useEffect(() => { load(); }, []);
+
+  async function adjust(item) {
+    const raw = prompt(`Adjust ${item.name} by (e.g. -2 or 5):`, '1');
+    if (raw === null) return;
+    const n = Number(raw);
+    if (!Number.isFinite(n)) return alert('Not a number');
+    try {
+      const { data } = await api.patch(`/inventory/${item.material_id}`, {
+        adjust_qty: n, reason: 'manual adjust from UI',
+      });
+      setItems((prev) =>
+        (Array.isArray(prev) ? prev : []).map((i) =>
+          i.material_id === item.material_id
+            ? { ...i, current_qty: data.new_qty }
+            : i
+        )
+      );
+    } catch (err) {
+      alert(err.response?.data?.error || err.message);
+    }
+  }
+
+  return (
+    <div>
+      <h1>Inventory</h1>
+      <p className="muted">Materials below threshold are highlighted. Adjust quantity to correct stock manually.</p>
+      {error && <div className="alert error">{error}</div>}
+      <table className="table">
+        <thead>
+          <tr><th>Material</th><th>Qty</th><th>Unit</th><th>Low threshold</th><th></th></tr>
+        </thead>
+        <tbody>
+          {items.map((i) => {
+            const low = i.current_qty < i.low_threshold;
+            return (
+              <tr key={i.material_id} className={low ? 'row-warn' : ''}>
+                <td><strong>{i.name}</strong><br/><span className="mono muted">{i.material_id}</span></td>
+                <td className={low ? 'warn' : ''}>{i.current_qty}</td>
+                <td>{i.unit}</td>
+                <td>{i.low_threshold}</td>
+                <td><button className="btn btn-small" onClick={() => adjust(i)}>Adjust</button></td>
+              </tr>
+            );
+          })}
+          {items.length === 0 && !error && (
+            <tr><td colSpan="5" className="muted">No inventory loaded.</td></tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
+==========================================
+FILE: ./src/views/RunningTables.jsx
+==========================================
+'use client';
+
+import { useEffect, useState, useRef } from 'react';
+import api from '../api/client';
+
+export default function RunningTables() {
+  const [tables, setTables] = useState([]);
+  const [activeId, setActiveId] = useState(null);
+  const [messages, setMessages] = useState([]);   // chat transcript for the active table
+  const [input, setInput] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const endRef = useRef(null);
+
+  async function loadTables() {
+    try {
+      const { data } = await api.get('/tables');
+      setTables(data);
+      if (data.length && !activeId) setActiveId(data[0].table_id);
+    } catch (e) {
+      setErr(e.response?.data?.error || e.message);
+    }
+  }
+  useEffect(() => { loadTables(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
+
+  const active = tables.find((t) => t.table_id === activeId) || null;
+
+  async function handleSend(e) {
+    e.preventDefault();
+    if (!input.trim() || !active) return;
+    const text = input.trim();
+    setInput('');
+    setMessages((m) => [...m, { role: 'user', text }]);
+    setBusy(true); setErr('');
+
+    try {
+      // Very small intent matcher â€” the demo uses two verbs:
+      //   "apply the <tag> discount to <table>"  â†’ POST /tables/:id/discount
+      //   anything else                          â†’ POST /tables/:id/ask
+      const lower = text.toLowerCase();
+      const applyMatch = lower.match(/apply\s+(?:the\s+)?(\w+)\s+discount/);
+
+      if (applyMatch) {
+        const tag = applyMatch[1];
+        const { data } = await api.post(`/tables/${active.table_id}/discount`, { tag });
+        setMessages((m) => [
+          ...m,
+          {
+            role: 'assistant',
+            text:
+              `Applied ${data.tag} ${data.pct}% discount.\n` +
+              `Discountable items:\n` +
+              data.breakdown.map((b) => `  â€¢ ${b.name} â‚¹${b.line_total.toFixed(2)} â†’ â‚¹${b.discount.toFixed(2)} off`).join('\n') +
+              (data.excluded.length
+                ? `\nExcluded:\n` + data.excluded.map((x) => `  â€¢ ${x.name} â‚¹${x.line_total.toFixed(2)} (${x.reason})`).join('\n')
+                : '') +
+              `\nNew running amount: â‚¹${data.new_running_total.toFixed(2)}`,
+          },
+        ]);
+        await loadTables();
+      } else {
+        const { data } = await api.post(`/tables/${active.table_id}/ask`, { question: text });
+        setMessages((m) => [...m, { role: 'assistant', text: data.answer }]);
+      }
+    } catch (e) {
+      const msg = e.response?.data?.error || e.message;
+      setMessages((m) => [...m, { role: 'assistant', text: `âš  ${msg}` }]);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div>
+      <h1>Running Tables</h1>
+      <p className="muted">Owner view. Open tables are listed on the left; each one has a chat box. Try: <code>apply the Friends discount to T6</code>.</p>
+      {err && <div className="alert error">{err}</div>}
+
+      <div className="tables-grid">
+        {/* Left column: table list */}
+        <div className="card tables-list">
+          <h3>Open tables</h3>
+          {tables.length === 0 && <p className="muted">No open tables.</p>}
+          {tables.map((t) => (
+            <button
+              key={t.table_id}
+              className={`table-row ${t.table_id === activeId ? 'active' : ''}`}
+              onClick={() => { setActiveId(t.table_id); setMessages([]); }}
+            >
+              <div className="row-between">
+                <strong>{t.table_id}</strong>
+                <span className="mono">â‚¹{t.running_total.toFixed(2)}</span>
+              </div>
+              <div className="muted small">
+                {t.items.length} item{t.items.length === 1 ? '' : 's'}
+                {t.customer_id ? ` Â· ${t.customer_id}` : ' Â· walk-in'}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Right column: active table detail + chat */}
+        <div className="card">
+          {active ? (
+            <>
+              <h2>{active.table_id} <span className="muted mono small">{active.customer_id || 'walk-in'}</span></h2>
+
+              <table className="table">
+                <thead>
+                  <tr><th>Item</th><th>Qty</th><th>Rate</th><th>Line</th><th></th></tr>
+                </thead>
+                <tbody>
+                  {active.items.map((it) => (
+                    <tr key={it.line_id}>
+                      <td>{it.name}</td>
+                      <td>{it.qty}</td>
+                      <td>â‚¹{it.unit_price.toFixed(2)}</td>
+                      <td>â‚¹{it.line_total.toFixed(2)}</td>
+                      <td>
+                        {it.ignore_discount && <span className="pill off">no discount</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <div className="row-between totals">
+                <span>Subtotal</span>
+                <span className="mono">â‚¹{active.subtotal.toFixed(2)}</span>
+              </div>
+              {active.last_discount && (
+                <div className="row-between totals">
+                  <span>{active.last_discount.tag} ({active.last_discount.pct}%)</span>
+                  <span className="mono">âˆ’â‚¹{Number(active.last_discount.amount).toFixed(2)}</span>
+                </div>
+              )}
+              <div className="row-between totals grand">
+                <span>Running total</span>
+                <span className="mono">â‚¹{active.running_total.toFixed(2)}</span>
+              </div>
+
+              <hr />
+              <h3>Chat</h3>
+              <div className="chat-log">
+                {messages.length === 0 && (
+                  <p className="muted small">
+                    Try: <code>apply the Friends discount to {active.table_id}</code>, or <code>what was excluded?</code>
+                  </p>
+                )}
+                {messages.map((m, i) => (
+                  <div key={i} className={`chat-msg ${m.role}`}>
+                    <div className="chat-role">{m.role}</div>
+                    <pre className="chat-text">{m.text}</pre>
+                  </div>
+                ))}
+                <div ref={endRef} />
+              </div>
+              <form className="inline-form" onSubmit={handleSend}>
+                <input
+                  style={{ flex: 1 }}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={`Type a commandâ€¦`}
+                  disabled={busy}
+                />
+                <button className="btn btn-primary" disabled={busy || !input.trim()}>
+                  {busy ? 'â€¦' : 'Send'}
+                </button>
+              </form>
+            </>
+          ) : (
+            <p className="muted">Select a table to see its order and chat.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/demos/index.js
+==========================================
+import { demo1 } from './demo1';
+// import { demo2 } from './demo2'; // Add future demos here
+
+export const DEMO_REGISTRY = {
+  [demo1.id]: demo1,
+  // [demo2.id]: demo2,
+};
+
+export function getAllDemos() {
+  return Object.values(DEMO_REGISTRY);
+}
+
+export function getDemo(id) {
+  return DEMO_REGISTRY[id] || null;
+}
+
+==========================================
+FILE: ./src/demos/demo1.js
+==========================================
+export const demo1 = {
+  id: "demo1",
+  name: "Inventory & Purchase Orders (Simple Flow)",
+  description:
+    "Configure one basic, high-value workflow in under 10 minutes with zero code: Chef asks for stock â†’ AI creates PO â†’ Manager approves.",
+  status: "active",
+
+  guide: {
+    title: "Inventory Auto-Reorder Workflow",
+    genericInfo: "In a busy kitchen, the person using the stock (Chef), ordering it (Manager), and approving the budget (Owner) are usually different people. This demo shows how Sageion AI bridges that gap by orchestrating your existing CRM APIs into a seamless conversation.",
+    workflows: [
+      {
+        id: "wf-1",
+        title: "Inventory Auto-Reorder Flow",
+        description: "See how a simple AI chat can trigger a low-stock alert, generate a Purchase Order, and update inventory upon approval.",
+        estimatedClicks: 4,
+        setupRequired: true,
+        steps: [
+          {
+            id: 1,
+            title: "Prep the Demo (Simulate a Shortage)",
+            instruction: "To trigger the workflow, we need 'Basmati Rice' to be below its threshold. You can either click 'Adjust' on the inventory table and pass '-4', OR simply click the Auto-Setup button below.",
+            targetRoute: "/owner/inventory"
+          },
+          {
+            id: 2,
+            title: "The Kitchen Queries the AI",
+            instruction: "Instead of navigating menus or checking spreadsheets, the chef simply asks the AI. Click the prompt below to inject it into the chat.",
+            targetRoute: "/owner/inventory",
+            samplePrompt: "Check the current stock level of rice"
+          },
+          {
+            id: 3,
+            title: "The Manager Approves the PO",
+            instruction: "The AI detects the shortage, creates a pending Purchase Order, and drops an approval link in the chat. Click the link, review the details, and hit 'Approve'.",
+            targetRoute: "/owner/inventory"
+          },
+          {
+            id: 4,
+            title: "The Magic is Done",
+            instruction: "Look back at the inventory table. The stock for Basmati Rice has been automatically updated. All 3 CRM APIs chained together in one conversation.",
+            targetRoute: "/owner/inventory"
+          }
+        ]
+      }
+    ]
+  },
+
+  buildWalkthrough: {
+    title: "See how this agent was built",
+    subtitle: "3 API endpoints selected, 2 branch mappings wired, 1 chain published. No editor, no CLI, no YAML.",
+    videoUrl: null,
+    videoPlaceholder: "YouTube walkthrough coming soon â€” drop the video URL in `demo.buildWalkthrough.videoUrl`",
+    facts: [
+      { label: "APIs used", value: "3 CRM endpoints" },
+      { label: "Chain steps", value: "3 nodes Â· 2 branches" },
+      { label: "Build time", value: "~7 minutes" },
+      { label: "Code written", value: "0 lines" },
+    ],
+    apis: [
+      { method: "GET", path: "/inventory/:material_id", purpose: "Read live stock" },
+      { method: "POST", path: "/purchase-orders", purpose: "Create pending PO" },
+      { method: "PATCH", path: "/purchase-orders/:po_id/approve", purpose: "Approve & update stock" },
+    ],
+  },
+
+  workflows: [
+    {
+      title: "View stock / low-stock alerts",
+      content: "The agent calls the inventory endpoint with the ingredient the user names. Current quantity and the low-stock threshold come back, so the agent can flag a shortage in plain language before the kitchen runs dry.",
+    },
+    {
+      title: "Raise a purchase order",
+      content: "If stock is low, the agent maps the response into a PO payload â€” supplier, material, quantity, unit â€” and calls the purchase-orders endpoint. A real PO is created in the CRM, not a mock.",
+    },
+    {
+      title: "Approve order & update inventory",
+      content: "Once the supplier confirms, the agent calls the approve endpoint. The CRM marks the PO approved and increments stock in the same transaction. Three APIs, one conversation.",
+    },
+  ],
+
+  // â­ Direct comparison: The old way vs. The Sageion way
+  purpose: {
+    whatWeDo: "The Old Way (Framework Trap): To build this, you'd normally need to hire an AI team, force your engineers to write wrapper code, generate a strict OpenAPI spec, and pray it doesn't break the next time you update your database schema.",
+    whyItMatters: "The Sageion Way (The Runtime): We don't ask you to rewrite your product. We don't need an OpenAPI spec just to start. We ingest your existing endpoints as-is, and output a production-grade AI agent. You keep your code, your team, and your exact security posture â€” we just add the AI layer.",
+  },
+
+  // â­ The structural moat (Why investors should care)
+  moat: {
+    eyebrow: "The structural advantage",
+    headline: "You don't integrate AI. You inherit it.",
+    subhead: "Every vertical SaaS vendor is being forced by their customers to ship an AI layer. Building it in-house (or using frameworks) means months of engineering, brittle code changes, and a new AI team. Sageion gives you that layer as a product: your APIs go in, an agent comes out â€” and every one of your customers inherits it on day one.",
+    scaleDiagram: {
+      base: { count: "1", label: "base agent you maintain" },
+      inherited: { count: "4,200", label: "restaurants inherit it automatically" },
+      overrides: { count: "87", label: "chains pin custom overrides" },
+      pushes: { count: "1 push", label: "updates all 4,113 downstream apps" },
+    },
+    pillars: [
+      {
+        step: "01",
+        title: "Lowest Friction to Start",
+        body: "No SDK. No prompt engineering. No CLI. If your CRM has REST endpoints, you are 7 minutes away from a working agent. We don't need a perfect API spec to get started â€” we just need the URLs.",
+      },
+      {
+        step: "02",
+        title: "Zero Code to Maintain",
+        body: "When your CRM updates, your AI shouldn't break. Because Sageion acts as a runtime (not a framework), it sits entirely outside your codebase. Change your database, add a field, ship a new UI â€” the agent adapts without a single line of code.",
+      },
+      {
+        step: "03",
+        title: "Effortless Fan-Out",
+        body: "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. 1 push updates all 4,200 downstream restaurants instantly.",
+      },
+    ],
+  },
+
+  // â­ The Investor Hook (YC / Pitch ready)
+  pitch: {
+    oneLiner:
+      "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into an AI distribution layer.",
+    whyNow:
+      "Frameworks like LangChain or Lyzr require a massive engineering lift. They are built for developers to write code. Sageion is built for SaaS vendors to scale. The market doesn't want more AI frameworks that require rewrites and maintenance. It wants a frictionless runtime that makes their existing product talk.",
+  },
+
+  // Sharpened to focus on "No rewrite"
+  crmAngle: {
+    heading: "Built for vertical SaaS CRMs, not for one restaurant",
+    intro: "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant â€” they sell infrastructure to thousands. Sageion is architected for that reality without asking you to rewrite a single line of code.",
+    points: [
+      {
+        title: "Your APIs, unmodified",
+        body: "Sageion consumes your existing REST endpoints â€” auth headers, path params, query strings, body payloads. Nothing is mocked, wrapped, or refactored.",
+      },
+      {
+        title: "Your customers, individually",
+        body: "Every app on your platform gets its own tenant-scoped agent. The same three APIs power a thousand distinct assistants without a thousand integration sprints.",
+      },
+      {
+        title: "Your governance, preserved",
+        body: "Per-app API keys, tenant-scoped auth configs, and OAuth connections flow through unchanged. Sageion never gets credentials it shouldn't.",
+      },
+      {
+        title: "Your team, freed up",
+        body: "No AI platform to build, no prompt engineering to maintain, no runtime to operate. The SaaS ships the feature; Sageion runs the underlying layer.",
+      },
+    ],
+  },
+
+  capabilityAtScale: {
+    heading: "What happens when the agent inherits 4,200 tenants",
+    intro: "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
+    points: [
+      {
+        title: "Tenant isolation at the API boundary",
+        body: "Every run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant leakage isn't a policy the model has to respect â€” it's a boundary the runtime enforces before any request goes out.",
+      },
+      {
+        title: "Your auth, your scopes, your governance",
+        body: "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture.",
+      },
+      {
+        title: "Rollout with zero coordination cost",
+        body: "Publishing a new version is one click. It propagates to every downstream tenant that hasn't pinned an override. Customized agents keep their customization; everyone else moves forward automatically.",
+      },
+      {
+        title: "Operate one agent, not thousands",
+        body: "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. Support, observability, and upgrades stay centralized â€” same as your existing product.",
+      },
+    ],
+  },
+
+  connectorsSection: {
+    eyebrow: "When the workflow needs more than your APIs",
+    headline: "The same runtime reaches the third-party services your customers already use.",
+    subhead: "Your CRM's APIs handle the business core. But restaurant owners live in Google Sheets, order through WhatsApp, schedule shifts in Google Calendar, and dump inventory counts into spreadsheets. Sageion ships a connector framework so those services are first-class nodes in the same chain â€” not a separate automation tool bolted on later.",
+    lead: "Connectors are opt-in. Attach one to a specific chain node, only where it makes sense. Two restaurants on your platform might use the exact same base agent â€” one fires a Slack notification on low stock, the other writes to their own Google Sheet. Same agent, different connector attachments, both managed from the same admin panel.",
+    categories: [
+      { icon: "ğŸ“Š", name: "Sheets & Docs", examples: "Google Sheets, Google Docs, Notion, Airtable", detail: "Sync inventory counts, write PO logs, or dump daily sales into a spreadsheet the owner already maintains." },
+      { icon: "ğŸ“¨", name: "Messaging", examples: "Slack, WhatsApp, Telegram, email", detail: "Notify a manager when an order is approved, or ping a supplier that stock is low â€” from inside the same chain that created the PO." },
+      { icon: "ğŸ“…", name: "Calendar & Scheduling", examples: "Google Calendar, Outlook Calendar, Calendly", detail: "Book shifts, schedule supplier deliveries, or drop consultation slots for the manager â€” as a parallel action on an existing node." },
+      { icon: "ğŸ”—", name: "Custom Webhooks", examples: "Any HTTPS endpoint", detail: "Your CRM's own downstream services, or your customer's custom integrations. Same auth model, same scope, same audit trail." },
+    ],
+    chaining: {
+      title: "Connectors attach to nodes, not to the whole chain",
+      body: "A connector fires as a parallel action when a specific chain node completes. It never blocks the main flow â€” a slow Slack API call doesn't delay the PO confirmation. Failures are logged to a dead-letter queue and the chain keeps going.",
+      diagram: [
+        { node: "POST /purchase-orders", status: "success", connector: "â†’ Slack: #ops-alerts" },
+        { node: "PATCH /purchase-orders/:id/approve", status: "success", connector: "â†’ Google Sheets: append row" },
+      ],
+    },
+    auth: "OAuth connections are per-app and tenant-scoped. Every restaurant's Google account stays isolated to that restaurant. You can see which chains have attached which connectors from the admin panel â€” one glance shows the full audit trail.",
+    positioning: "This is why we're a runtime, not a framework. Lyzr, LangChain, and CrewAI give you connectors to your own tools. We give your customers connectors to theirs â€” as part of the same runtime that powers the core API chain.",
+  },
+
+  referenceCrm: {
+    eyebrow: "Make it yours",
+    heading: "This is a reference. Yours can look exactly like your product.",
+    body: "We built this demo against Petpuja-shaped endpoints because they're a legible reference â€” but the shape of your CRM's APIs doesn't matter. Whatever surface you expose, whatever flow you have in mind, we implement it against your actual APIs.",
+    offer: "Share sandbox credentials for the endpoints involved in one flow. We'll build, test, and hand back a working personalized demo of that flow running against your CRM within 7â€“14 days.",
+    callout: "No commitment, no integration sprint, no AI team of your own. Just the demo â€” working, in your brand, with your real API responses.",
+    footnote: "If it's the right fit after you've seen it live, we ship it as a production agent on the same 7â€“14 day cycle.",
+  },
+};
+
+==========================================
+FILE: ./src/config/sageionDemos.js
+==========================================
+// src/config/sageionDemos.js
+//
+// Single source of truth for "which Sageion app does each demo mount".
+//
+// Every entry is exactly the shape that window.sageion_os.setUp() needs:
+//
+//   setUp(appId, apiKey, region, rootId, version?)
+//
+// rootId:
+//   - "" (empty string) â†’ the SDK falls back to document.body and mounts
+//     the floating chat bubble bottom-right of the viewport. This is what
+//     you want for a full-page demo.
+//   - a DOM id string â†’ the SDK mounts the bubble inside that element.
+//     Use this only if the demo page has a dedicated container.
+//
+// version: leave off unless a specific demo pins to a non-V2 backend.
+//
+// âš ï¸ These keys are public â€” they ship to the browser inside the JS
+// bundle, exactly like the old /config.js did. That is expected: the
+// Sageion api_key is designed to be client-visible and the backend
+// validates by tenant + origin allowlist. Do NOT put any server-only
+// secret here.
+
+export const SAGEION_DEMO_APPS = {
+  demo1: {
+    SAGEION_APP_NAME: "business-management-demo",
+    SAGEION_APP_ID: "APP-mwdzm0h2-7dt86s",
+    SAGEION_API_KEY: "c2FnZWlvbmRlbW9fX1NFUFJBVE9SX19idXNpbmVzcy1tYW5hZ2VtZW50LWRlbW8=",
+    SAGEION_REGION: "US",
+    // API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
+    API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
+    API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
+    // API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
+  }
+};
+
+// Convenience: is there a Sageion app configured for this demo id?
+export function hasSageionApp(demoId) {
+  return Boolean(SAGEION_DEMO_APPS[demoId]);
+}
+
+// Convenience: safe getter, returns null for unknown ids.
+export function getSageionApp(demoId) {
+  return SAGEION_DEMO_APPS[demoId] || null;
+}
+
+==========================================
+FILE: ./src/assets/hero.png
+==========================================
+‰PNG
+
+   IHDR  W  i   Ÿ›÷  úPLTE   éèì~v†~v†pdu­¨±ÙÖİæäëdZl—¢}uƒ‡•~v…½¹Áâİê†ÉÆÍ~v…†“w†\Í€x‡ÔÎÚ~w…º¶¾»¶ÀÈÆÌQº}v„~v†´°¸VÅ~v…‰•x‡FæÜÖä…R»¿¡âTNZ…~ŒÑÂäg^p|u„OHU€x‡IYQ^•›¦¡«·å|v…Ë±è}v…Zµ|ï€x‡xC±Ÿ™¤€xˆ—aÔ°é\-gâªmë|ÄŠƒ‘f4›}u…BLEQœ—¢q5¼a½hài×HÇŸcâ§kêV(“XÒr!Ü¯oõ}.åm7°MåOª_æ£tÛ´}ñ–[Ôo3¸©‹ÇqéVÃY%©oãQQ±s0ÒfáŒ…’E–@9FXÀJ‡h,Ã¤häpEŸ„H¿:	‡BšO²Š<å=‡œ_Ú‹5ò«rèŒOÈÂ†ùd\j~:Ég`mÃ‹õ8	ƒH½:	‡w‡4{ŒOÇ~F¶§mçŠPÂ>
+‘=
+Œ’TÏSÈ@„—[æ‰LÄ‡M¾‚I¸}v…QÌ4
+u¨mí±wñ™]Ğx>·{E±•YÎ“Wáw?±ˆKÜ˜[Õv@«;|q7µ gåœaå¤iŞ„BÛG—A–Nâ”UÓ0p}?Ô…JÂ~B½_×[(š˜_ß®tèv:»RÜ¡fë“YÉ¡eØd-¨j5¢Dp<¥L“­rğŒIèTÃp9¬v1Úa-Ÿ½…ò^ì™ZÛS šU%K‰•Dì‘QæmäfÜL§eòC›?å bŞŒOÔ_ÔT­X"£ÃŒõ|>ÅcÑe4™’VÚk2°k5©J§ªoâ…Dâ„DÎDÆ”Ué…Nºtè:à]%®P£«kó¹}öv9Î„IÕF¡›Pî¶}ëL°,gG~‡JÉ_!¼¡[óg,ºÉ”÷±röŒMÌ¦cçp/Ï}+éh'Éu7Ã{ón1Ãi Ô°«µääæ¬0¡B   |tRNS ½p# ¥‘T°;Ã©ÃşÀ*`YJAşCßdşï¡¸ ¨S#·20À>Ÿ ˜|cŸAÊãß»‡ŒsşïŒ|uÉo^Y_]–„á´?ŞÙ¤?ÌÇ®œ„}dƒkecÛ¢8çÅÂ¬sãÜ×À¸á»ŞÀ¾åİĞ¢ÀØøåÃ²}4  /:IDATxÚìÜ[®›0àa¸	!ŠDH‰À:m¬HTQ%”¾f_Şknİ›µ‡ Ä6ştV`EÿñŒg Ã0Ã0c±œS–Ù«óùr¾ØöŒ‘Âlõ¹äˆÉ6¸ßş®u‚¬-ÓUvc'»”œÖnüÑ‚?­½ü –4ÁxøPSõÑƒ÷xÇ[–ñ Ç.i[ĞÍÚDXœÍöSÅÀƒ>Ş\äæd{ŸêÕƒ¾,¹mnÿE¼îàë
+“³İHŠÉ•WØ˜0xŸó…'{b­‰Ù÷ˆWã»XÚ`ü3Xë7î-21û·‰`'ÚÔ„Áıİª¥GÍ?"¿˜“ıíV²`“pMüB#¦²‰¨9ÙïÁJ“=Lé°5¥­(Z]˜˜(mW‹>Ù¬Ä`Óó¯KY’ÒjÏ±‰°Yæ“‚sáIÏ³O–³"X?ùğT.ãK+mIOa³¤˜=¥üCsØDøy)aà¬8îa.1[HÌŞJ`F¾‹…ş1K
+Zí`^^¥{Ì†)O0¿|ÛR}ÃÀ±[<Zğ
+ÖQß‡š[‰×5¼Š¥i‘¤tt7p|iK@/a‚I¯vˆôºsıèJ`-†c´9Ù¬Áàäà×ºÄ,I1Ù€<6[,Ôï :şáõÁz/V~Ñ±K€t|•î ’†]=‘U©ûj{ú>Â"«|«fÑYqz™)³¢hµ@n–K‹¨„|ÆH–k—R£Ş?FXÔ+3#ŠV¹ƒõïª1ƒ(FXä¼[½Çÿ$ÿ‹0}ÕˆÒVæbxn•	Ö{±ÄÄïİ@ÙïV1ÛÊ¹^G*iÑªr‘¤4ÉAm"få
+gÅ%xfoO¥zµ›Â>è@¦õ:RĞzºXWLŠ˜S&q7pˆMõúõ:gÅU*Zû±^¾Å|+i êµ‹åbsƒWİ@•o¬]v[ö¢Ä0ÕãnÕ1ƒø@Ÿk¡İÀ!|—µ_B˜UVRÅºƒ|¢³†˜ÔçÆÚ%¯æë †—Vë`ık½®;fZh“Š5K‘òÌÎÅÚ>{ïƒH=Âò/*tEÑªæ3Ëx{ÄgÅ¬œ³³yR‘ú­ıxO	STş™eŠ˜å“®×9v«{ÑÚõó]:,´ÉÅw§*m	cÕ²ƒõ^MQÚ†”.¨híçµ—pô÷Ã¥Xh“‹?r½.+T›œ‹¥E6¼¸•i¡M."fOƒÚTœK<ä]¢¨ãKëä1ûhÑZ›`ı??bÍ	z»µÌD@?1íÿ“=óÊ”W}ùQKèÁa<2Éú•½³Ùmˆ¢ğuâŸ8×ì8¨Xu©¡%²Å[Ä›D¼b3o0O2D@€Oœ´›.`Ó«éñ¹çÎÏAû‘¤°ïevMã«°R`TÖ­ÖÃp2Éj€ì]ÛXğxfuKz^«.8¿·&-c¹èT “¨[®ğÕ‚4˜º6ÃJSÿÕ¢ÓÁéQGV²¯5¯!u4a#ßkëÚ­×f¸J[WPG‚šõÚëb×&Ü,jêªº¡v|)ßéëÚ	A2U£¯Jv“‚ÃMe|•A—¾Šá©¯5uµóhE‡6_¿©šº’×E/bMCƒ”ö»%gd„çqÇxk°Xè¡¯«Š‰Œ-[u!,Œ[n‰È©ñYvõÃİÆ,;cyõÓP@]éU§)›O¨ÂzÿjïœCÎÃ®óªc”.í¨Y¯3ÚaoYÖ‰;daLDÈzUñŸ§j®ë€ña8n¹{˜×F*Ú{‘ã“ôxJ;€ï–´ÿ:#.¼NşÅ˜{³_)Y×ì3òXÖ¾‹rŸ{ÃB›è ºÚô7“-³:™ı‘³?„××±ŠßÉì/	àı‹ƒ­×}—wkw
+†¹1íù,û±“Ìe·‡›l—=Öàö¯û$ó«÷\V9Oè1¸NÆJóçóŞ5·¶~ rÍ@6bô8*Õµ!Ë®õr;cÚ#­±Òİ¿iŞ¹¤¡’Ù«ŒfoÜ*·Ò‘Ë[Òğå³CZüklmÓğI÷ùÓ==ÎÇÏiíõg<»®Qx•¤g}ÑÖ•|V+5Ş5%ˆ¶Ç¶3ªc{7¬;³ÜñöZDÃeÈ©v‹÷©VXÈ]ˆÅUÈl2)bÁDDzÌûÁ‚'„T6ºx1˜Ì…k#eå¯‡Uåtß­O¦YD9Œ¶evÉ—ëÚ›Ò³	-+½Õ|·ª5ÉŠĞÀnö^®äl`ÿQ¬‡´««n½şˆµ¸O˜\èEI•"¼ñx`Õ®×ƒŸ÷eD^Œ¿DÏ{Ìavßíú×‡KìªWabÀ.ì\½½a¶VR¡ÃÃo'çØ” á‹K’Ùt1÷±Œ{.ŠÛF·’)‹¯¬èb®„J~4­ öJT r¿çÂ>¬EèÀ,d±SÎÎJğKW(fÒ,ï5>kÿáRğ»8
+Ûÿ²‘±©Ò@„d.÷ŸèBüëÃˆŸ0™íµ{ö¢V¾wS)Z×}ÆkÉ¬cY{/á÷ƒÒu vÅ]ÿ•[êôõíàwêñf’[› Æ+æÙX+$$3ÿ[¹e“÷¡En@2ëµQ·|PXUtK§c¸–ØÚŠ^Ú²X€Â‡âä¯×&³FµÊs½
+vy°]	«I ˜¾î0û2Å d­yBÂŞ0ï!¤\{İëò­©Í]Lmk[`«ïµãZnÇšÎ}4àŠnI[¹eÓºV9—
+11°xÄ*40aîÆ¤å¨«64àaUvuî›câM5Â
+®×û‡é–xk[ñ’¶Ëæ`!iàòÁ<ú}CQøÔò1íÍ“#Ó@<A”˜•r,q–¯uøÓÀİ@à™¨DìRã›ğüZÛ™W®lLX£šÖÆş|P3uÏ©µ5\6‡›ÖÅ`şdX(M‚x¶ÇëÒO	a4Öˆ°â>omæf)Îäx]Õ´Ş€Â
+6­x]qúŠ¯Ğ©­÷òn6v«½ùnÌrL]±)Íñ2ûÒËÙ0Ğœøs¾8Ô[™÷&’ákåM0ÏÅ_4AL‘‚ÃC¾¾¥—güMİèÅZÛQPbiàÍOa=Ì¾ó‹Ñ–e3z~ì:‡O¹‚Ÿ2mî_ñAä©yBöü2káM+n›VÎÔ~ÕMŸC–èæşÌ|'ÃòøÙØÂø¬®¸ÌŠëÃò[[;ğŞ@u„°Ş£um2µ@™Ë=7ø¾ÛÂò$u5—Ç=6+yşÏÒÚ&=:Vq¤·,t$úq‚‡j€ÁùñÚtÒúÎ›şëÂ#„YV>ih`{åÒ{'ç’‡c­ó\¹ƒÉìÓ½ùilJTX‰¦Íy ü+’ `‚øT2›À{= iı+^×æ2[Àóğ'ƒI NZc·hÔ´bûŞğºâôeäb9×¶ôb:%¶h#K¨wUU[³^w[½1õœ„§#gAz«L¯ë`pB­^KoŠÁÔwN5i,pxÈ×c:ƒS”om1õtÜâ$ã„QÆÜK£sI¿“w6½IDQ>å2|´ÎíÀ”¡Ó&¸€ lp â$U2:©A‹	±Ú)"ÂFMXËÊ­+ÿÿ…]»céO0Äw4jı`<Ì;-ò¬š’¶é»x8÷3ŒVÉ(½œpeú°¸…İdmà"ã\¨Á6ˆ!)˜6P/¤m`0ı«÷QAŞ^’Å·±ÂÂõ¾…Ï•_³÷<¯;ˆ9ìn`”­°|ëâçêmUôíuFtşTÙ•V9.ŒPw
+óçŠßÓäk_»4ˆœĞ•	U±w
+sÜwÙÓæ›‘ËU[èb»Ø6m±ÁÅåÎ‘YSÛAD~dÕš¼‚¿ÿyh­’[¦ùş.ïYŸîR€ CZœ]9ø6 S•×IB~hšY8DÆšën¾a“¤Œ¼S…-ÎJš[ö™õs….U-¹kSp¨™ÓdYr¾o=ê•ÿ¡ÆƒZ9©†I×şPÕ3FèÜ'Täe[ùñ³×ÌÉ àxß+SÀ‘Uƒ_`šİA—SZ&®ª¡ucG’6åMY–¤òÚzè\ÁÈ(€%£}ådÌÃ‰ùp±s}hYL¬¿£uQŠjº,•ãq#iÄãå²¼Uœ¯àJ×)üJ~8meÍõâ?ÅÚ³ZÍ€2ÍnADÖvmí/ö>àĞ,bÃU$¥ŞÔ¬Ít§Jj ¶ÂbÏğÓ¬y6[Ynÿ²Nª¢732URŸı'ò-³±pÓ¬#VGîÉª²ÀdõïbuIvÒ)A ÄÂşˆuÚº„Ÿ@ÍFŒÔI±Î”Át/Dr«>ÌÙ#VE[MFA ;	¢z—mƒ˜X®¼bX×(`q4~#¯ïş.V7ÍšÍ³ŸëÍï‡V4u’ÁO”BÚ¦€§6œt²‚s_äëQ#sÂ¶IÅ?±ÆÓöœ¿-êh8	ÛÓd
+7jàÅöíaë’#Ö¹¡Ã3Ü îıåĞŠ×lÚiV.8m ò/Æ­,œAš¦õ¢@4ˆHŠÉ´¯TÌ1bšx~ÍöÆf…SŒö.×j¡¯Ú\š¦×\ÉáÛ|x Ü(ÄeSÓ'ÅA·ïU³a–"Wm ?Î…ošİ,8‡V~ò-Ös‰Èu5ÆÑòCmâa.ÂÄª/Ğƒãıo®ü~Íöp³^³êœ{ÆÑ“m ?Ñ«Ûı¶¿ÆüœX­ãû€´G •TR_ÉÎwOµ›m[Ç.‡VÍV‘£g©æÀo*ƒíı,œÍŞ˜µbĞI¢ ÁH¦ÀR¥  zuƒ£Aäñk¶3ab‡V'jjG%ª—	b+Q„Ó ¶}ókx5†¾Ìr‚PVX´$¡;ò––ûùİÜÖ¦d¨)Bê:‘ä[ÛıG€…%‡x×Š‡*u›Ñèu5‘P«)5•b_b×õˆ§ÖİŞ/áû,×WQb=nT 8h¤¨èõ¯èº®hQ
+zuûüS?rÅ
+ølÖ`Y ‡º7‚Øl{ğ©{g©,Ÿ||VÁ4ûÇEX.V®¿ı°/4ÙÒóA–zëÕ³§Âæ×Ë6º÷a9¹tøòY›còÏ~µmöo/ÊS	?ü¸_Âğ©?zşnéÄú»Ş³d1Éá_-uº‡Ë(Ö/ìİ¿kSQğëäV‚ oxƒ>¡K! •:h
+Qj•ÖÔD$†â/Ä©8íæ!"—"¸¼¸ôdPi#c‘G#·-Ş—B‡ÒåñÚ¸ˆ“•Ö“¼§ƒÒóù¾\¾9çŞ6ùÕ€Õ¼;09|bÍæÏ2ò£š†Ù_2™LZ»v‰gÊgæº<º3z’‘Ÿ5ûxöÖ™?ÿ‡¶´´öçpz™¹-wW±FÎ_9PKkN¦šÙ(–ëå|d„Šu_q³1İ“ì®‰ÕLÒlõûD3{+Äy=3flÄù½™õüäŞ‰»n˜#T¬=j¹h°{+£@ÅÚÛÀ©Ä» ÓuÃ8¨÷VAÉ%³ş\4òtXûvn4í/Ö5k §
+C7úy¿j=¤Xn	ç£½»ÕÌS¬[Ìa¸hÖ ] ¨C¹õ1†›2ÒŒ58WÆ+öøf„F¦gî1ÌØ‡#Á–´aowè
+;”¬9‰İb¿İ:ÊH—ZSØw]muş¥_zıŒ·nboYÊ5œs-ìƒkøíåÊxóögØe³B±fĞóê,Ñ¶JvÍµİ¹ÀHpGæŒQ¬æA¾4rh®¯ß[Œ5P6¿á¹Ö—S´q–ŠD<,×k¥Wízú#ÄFĞóZ*¾vb4Ão¶@Á}ì± íÖ^.×§)Ø âå€ïcçu²ëVç§;ÍHŸÎ–P
+š«ïºuGtë©	Fú1X(o øø÷±\bÛÙ†ÍjÊ:ÆHOWÍr‡Kåùà¥±~]Ür‡Ú6(o»šŠÓ»l§’æ¦-µíy ö#,×–éK«Í•í¸‰	úüBD¾ùZH%(Ùa÷niUKO	O—jÖFö7`åà¯pÊXAsm¶<·8¿Ò|àv-1Mï2ûšÈ|Ú®„Ojğìšëœ	Oª¥ÏJpƒT•WÏq*ƒ=N¦3K])uWƒ²W¢k»	,×YókÕuß<—œ+­”ºX‹ÑÌõ«£V¦£´-ø—¾Ô@®>I£¹n4¶İ¡öGíqOr^‘¢²ò"fÑš°ËxaIki[€¼Ë+JJY|šCûuÆ„juş¥”bÍ×Vì5±]KYTßÙ;—X¢8Œ³agÕØtaá‘ØXˆ©XI!^‰•HDb#™NêV[Âp8s\3c8L‡cÎ Í¹ÓzÜi¨Öå¶£CŠ ^Çcİx¬ÜëŸ4Ó.šI~ùòïÎÌ9?kÊÂ‡‰ÁcÀû‚®‡øéƒÂR0>g­¸
+éV³?/›†¾ıA'^èb/œ1õæúV#–,2êø)Öº÷^çê3¼ã©îAç}G®GR×#Oï›;+c€<õŒ  .9XçüŸ—[´çô==à`¹¯êF`pGà­A¾çK§õ­•¢p¤x>oBË Ø )„$`˜tßÔÙC|‰fòúç3›©!T0°çá§…À0Bÿ`Ğ³¶ã¸•8mšruóSlpg%p°°P¨½’§N>lÈÖÄéëëŠìt¿òCáz€¸WrÀ\|Æ@(Ÿouæz]|V~Z­î4Á„»‡nx˜!T`¨Ö×#Ã9C5ÍŠ-ñüÕœß†ñé!˜¤PàãP6^Jtâ:éˆ(òÖ jn©{½BDÀ>¶ıSqG®7†dæ>yÉµÓ=&<“;ßE0À.áºó01¸ò°Ç²Ö˜tÇíÖ
+	1ZTfÄM†=z¡áà2j,ÌîÌ]È)õ9‹‡\k;%vËß\­ÊÊ™Üæ·5"@ğÀ Òqhè!&¡Ùó&šèøêÆÊ”J•?:p{€¹^„‚ P„Hˆ4º€ù¼³76eHÙì”%±×7Œjwşí™¹ŒÆ0±‡ÃâNà\tN$½¶ó6‡¿A[†NÍC¸€]L\Ì4h÷`¿»ïgN.0dÈ›Ü¥¶K_üùjÎ¹ãlµ‘íyQtyAˆ1öÏ‘Û@GÁ^O¥Ÿ5³²“b:qíjˆQÌè‹[¦UÍgô68½dhd®á“cŒRóÓƒ£;{äĞzµ_c„!¬» ¬„@'ØÀä<ÿŒËµs­Å»EcgÜÇ€Ëy5€Æ\æ»É£¾¢8=;Ø—OÔØ¢!ğ˜Á”i§ëåR±ØÔ·fgÈ¦ÒïCŒ†.Aàñ+ÍÊ‘Ü];×¤éÔ˜/İÙx#dˆbj»5W•4ßõiïí~K±úóÇß*—
+ïölô´.xñz$Rl6ı}0'[œ½GYÈBàÀwJÔä-î¿ önVßBöM¨®}Np)½©˜0—?`4‹Åò—°+6˜3×ˆ™]·o
+×[¥r±Ùnôğ4 Tœî“ª
+­ÕO÷™K¼€€lÏ‡å¿´ùÀºTÄØ·×(ği€˜F¹h¼j›{ÌÆQÓ¹OÚÍb$}Ô›>hÉN¿ãL:Jµ"åbñJÂ;°¡¼:M}€Äëcv}.·lcı%°«¢ínË( ¶m#íqõÚØàäQhõ+æÔşT*—£w¯?ÔbƒsqÂø.yÛî” )•¹ñü§ïìJRÊUf«Ô€aLCÉ5sı„²bC¶2µÀ¶©o« ôÚ’­"õÜ^Ó²é?hËåÈİ” |<×5øÖÃÇÍºùr"%$bkL©Ôl³-°jİ1Íã‡hRU‘«Ê ÀÕX=éwN}ÙèÀô &Ù°{¤IôĞ«Fİ2åS¤]*s÷™ g™A¶P3ròø­—Äİ	áX"u$-•›íl·ï(õÍ{{¹P5MeHI€À=°ôwÏÕÜ·j6wU	iRòšªîÑTé´oYw*p7Ør)ÒŠ
+B:‘¾‰g¦Iƒ	]§rÛv{!r¹&´¾Å¬ÂiÆåLæ4÷ ÉFÓ4ÎÆFê´ù¿¿ƒŞ²·*ĞT@$õÑ$ÿªÑä©W<À¸{¾X,•¢Ï„”˜Ò»VÌ$Ø”©Såm‰Ä.×İüólÌ˜b±ì7¥Q¹Ó×GUUMÚª­JuµÕcÿìl½E5.ús6'ûä¤½ÇŞ#ì{«T,Ó<úü›Á¹›úNVÜ}õR~ÎäA0€›Öe¾<öâX‚—(ŠÇ„V«Ü,¶Q¯MEiï³©´ç µ%¨Ò¼¹|Ÿ¹ó´Ş’¤ÖhRJS÷Ğ{G­VŞöx‚Dï¦ÓiáH"!ˆâÁ™Åÿº_Üe^Jp¨Ç‰/8Ùt*}7òÍÀÜK©˜‡’*U5Õ¶9ôw»a.G9ÔCjòÜIÉ–öœì½ó±­ø[ÒŠ´xI§9X1½[¸Ù½hñ?İÚNß}áUAà—„RÏÊeÎU•Íz]©ÄoïW%ÛÖh/MÆæÿí!æ_©;³‚8óÂ›§—>ôÁ‘xñ "‘8#Dqß„!ñ “5#ÄXuO³¬së[·¦èZt©`©³ÈjK#îãÅoı‰£¾ívÚ·é7“Ï|¿İv{4ÛÃÌÕµÆ†LæúõÔòÛ4X°–…tK'ºÎÂw¶ûû\]‡í»ëÚœ#ø.¶nS¤#ø‰$¤¬K+R¥L¦T:²cÿZóğ¶íœ9?AÀ/`vãÁ¬ùvÇ5`àÜNß)§S×<Ö´¢fY!jÙ˜ÔÌÈ]º¿O×ÿ³zNÅÛU½l›#xb`RKjàë¶©ôƒ4[fv›a<ß¶è'®ş"‡4¸PŠw®÷?^ÖŠÉÈ'Ù”À0‚ƒÈ½ëÆı§Zö™yeÛT· ¼®ÛŞéT_¡9prËÒÓÇ3™ô»×ó`Öø]ê9d­³-»Ã¼Wİ_Ş;×­/?Ö’QhJ|Ÿ#X¹Ô×%gw÷÷Ÿ`»ßÉ‰ØR +şW‚tŒˆÕ
+²N®xğ U:Vzí<7g1¸úÕnñólÖ0êµ×åÍ©»k¶?yü¸¨…a€Ç0b^-ŠÓWúüO™«UŸÁ™†Â6Ç¨ûkÇ[&Ô¯iH¯[Ò‡î~¾³óhÕ1 ¬¿[íç8çn>wª¯ËĞƒ}píä—Ë—“Iİ'ÛB(Š“E­JÙèş¿ôfÛöé³óÅî7œƒ•\ç6ä+ >×‰U«iÚã'WAIP.?ØqoÈŸù±{—!;î9Õë¥t&“ºõğcj5_p¼ub„}‹èf„Qò|‡ÿEší2âÒ	ÿá©À³”X”c›:GuHå8²¢¤ãu÷¾}Çevßø3W­ŞÛ_*¥?—6ºú­ AïEÇùcà¼x¥1¤P¢¸go‡±MŸ¹ºöyò!À‰ƒ‡j¶‡ğÓ®ÿãİÕB­øøñ¥Sû”¯Ş3øOŞ÷´ıbçèær¦\Ş½íêX°5+$†<!ÔÂ@%dù4*$ƒ§š¼´mÛ}ÌjÆÄò5*l‡WT‡aë„à0L/ŸY¹%Ê¼9¼ÅŸU»!×>?Ø•Ù»ÿb¡„h„€­ñ)<,b¡–ô©wwuæ…A›ß¤m¢EèÃşD0d[:ç\-Å˜ú˜0¡O¶ïM=X2¹ÅŸ×ø%/Ê¥MG¡E A)ù8®â²Ï'èGâ²±•(jÀ}wY‡fu¶ïìWÇ]W„	?<i|RBp„D`ëHbìûµd¢ğñ¥q;5¡[‹¿¡n=JŸÓ¶_½\,|	ÁpP‹†ñ aJ=Biâ["¢¡"7VwhFtì7ûÀ½Oõ8yhW XK¦0çÀV_§z¼f	¤¬ÂÇ‡·ºXÿ’Úu(-_{õq1YLø¾e!ì¡
+`€º”5èzKŸHåŞ]×t—zwš;ûîk£ºKÚªQíöõ„b±(C‚ëu ë#lY?0 İÀ¿©‹èÁ’‰P…à©h%>¢²ÒO’Vô|"¤%¹¸»¼©2Wë³¤î=¨fßH¦‚08c\ò„bœ)Á„C” Ê‰Z¡÷¤[ã‡À‚…D@,ß£¡gI*Å’z¡¤+©%Hhy\2.lÖ<—zwy`ıÚµÎÎªsŒñŠF¼û[ÎHQ·Uœ	¡B(ÀXç~˜,‚Äú×Õn*$­dE’„¡"PŒÂ PÉ ù%ˆ°¢ŠÙÂU¹üÒ&A×ƒË;Ló­±Ù<÷µÎıD ÷lo0›Ál[q°h€"¿6cZ‹£vbc-	Îr†#,)õU©È aKS¡D.Ìîİõş}iÛvìô]÷ªUgmvÇge…)¯ÁÛJ]€ã‚ÕaTy„£ùàê?ÓäY‰"Ø“EO!ÏÃJ\)8=ÊĞ“Â÷å_øç?¯ë;¥|ûsÓ„Òõ7Ë’y òéÚKÅêuğÔv+Å(œåàÖeÿTfê2BI…= ¦…/•tYNÜù¼ëèÕï_şqÌÄ~gß6ÏUÏ™Ù·æf³ºOpÕ Ş“Û{$cLåçŠ»B—*r4¸úÕy´¬
+bÈb’¨Šô(‚o®æ|#ï2—‰{uâŸïÔ}ètÙy~îÜóçkŸ™×s¥Ü«à“w¾a‹\<?æÂW$çMkÑê<Û£ì)¥âI¥„×¸x$h°§®›Ë	‘«³<uãÕ«Ùÿââ˜6c§ß¹³³¼Û¨Ş»išW™ÛÏ½oğ\(yø}ƒå… t¹.—@-7ÜlõŸï1%¸.] AğÔcŞÓÆåoÅêOås7Ø±n.Ÿ?ï÷÷ÿ9¦Ë¨òÉ«;w®|ÿüÜÍª™½òÖØ~îÂS!>5*ßVnl¸‚ß€y*!˜È-œùïğzówyˆÃxœ\''qAº¼‚XÔEAÿ§Ny§6Dh”–bÕ£U¸¾Ü+ÍÅŞ]…†(¹Mğz×
+-Ä4–¾Vêâ7Nêl¥ï#ã“'Ÿ'îû;f>`ı®šhièŞÇØp[ƒaFDÄPÄÿóóñgŞÕ+ïÎ¼á8ÎÄg÷\ç†Š«vçeJ‹ò}È*!7fÖKG/ø[[½j¯jøÀM(¿ª5BbÁYAF\„3<™ûãu0ÓúÈ«{¯ò|…Ö2g®Ù)š5©ßgµGË†°×’¤¼um=Àú§®\.ôªU_ÿ
+­ŒØqÏOê
+Gi^$"š.ââÆÿùšİsìb§Ññ¼
+øº™ÚêŒfCwäšEë~Y/´ÿdó+ ø¡Y°şÙ-©µV±2‰¿Ù¾– URÆLÆ(ÇˆGàkånìË¬\‡/¾Oç]0vü|n:Nß1‡®ë¼îç‚ixğ¯o/ƒ‡_&r½Àú'®èØXjÆÛµ®*B8sÀJ„\Pf¯­ú@òñ‹g^Ö¿¯•4°µíI¿ï8fÑ6Æ“‘eˆdG.óE	É®XÿÆ¬bJIdÏ†¼.4K"E‚#Æ1Er‹"
+œ-¬³GNœã¸;{ã¥ªÍóØ:2]w˜¯™›*bqÂwƒ«‚åÖ¬jã²¯E$[ìÄ2Vü„pRŠ  [Ûœ>€{´ù=Šn¬jk»÷TÖ
+¼4İíô–w§hNÀØÄÕ5³¦r¡âñºQàüjf7hãroÉ„\|ŠU"¥bS!B„Ã6jñ6¾Å) SŠ-Î¯eWrìèp¶Õ´0N>ÛOGónZ[ã` ğ:s§æİ7“¦DdIÔf'IÄƒõoÈ¥’K;‘J+É0âA³YMSkÑ¥!,xˆ¿ãŠV€Ù‡Ú'q€p=±?=›Ì=¯Û­<9_imÍ¦3ç=Ej‡%ÛùïÙs™İ££g$øú9Q
++à6GÀTTâ”?|Åy«4°R³-4°š<Ê]ú§?öŸÎ¾¢ã@°¥½ã:n·‰›ı×éÈ3İ„Bm‘ÊüìFfwiãzê+S‹À² £%Ô~HÛ<|UBaû‹¢a
+$hZ‚ÿKÌ^ÊµÂ 9 Õ”É[oèŒÁVo¼=ù
+§Óéd>é'‘Ÿ¨
+Ì]ì:ıäæÜ]Ã0î¤“‚³èè~@ÒEAPáxCguvÊXè!iÖ¤ùÚ/`i>[£âÇG5ôBi‡€’l(­%gµÖáàä'¼;Ø>ÿAü¾'—÷½üêÍ§·ï‡ï^v›$½í»(ª¢Û¼|¾†áĞŸ£°v2³ç¹z Ó¬Y†åÙÍğéÓjõ3ImíÅ[ƒ9Äµ ¾:ó“êÛ³ÿw·úöŸy÷şİöpØ5à²	o#QŸ§„€³¡‡ŠaD–å†×íş“Îµ÷ ZÓÈ³F‹ãn?ë¶z÷ÀÙè
+¾6ğõ£3¹Ó$ÛëËÖoß ¾ß~Z ø6Ï†)A:¡>bÁ\)6"#uw:5º™¿}´İy<c[ÚÈ%†âaLëŞ›xRø’W§•æµàŒgñ¸ßøX²™eë·˜…À6Cß&MÆÆHõ}ÅöQ¤#Lí&Vr8çµ†°œ§Ú\ÿ»5—2Œ­•`'g`%6Q¬i54À×^ïá|>L>fñ¬Ğ¼@—¥[}W-dúQÊˆ*òuùCj9=b“…Á™‡àáææ¦g¯Ÿÿcì^Ëè‰[‚aà‘%	²‘©X^6pÒ¸ö'[ƒø
+x[í´-¿EØ&¢—
+ Dåå©è‹fÄG·”+Ø˜B`ŸõyÑ¹ƒ»ş¬[­SÓz4r…ÒıQ”à„WZÚ3g§õ5Ì°à«Çø…e5túfA<İĞ)DVRuNÊ™ºN+¦›TìE”LK‚0‹Asİ#¿Ù]Ç×$–cSx´K£ ‰8åQ„ï÷Çƒ¸j|ÁÀd<=ûxdÇêèØºÈKºHxúQ¿XÁüFH‘‘(fä>´×ÜSöıîÜ…jŠX£z °âcS³&Ê´ÍÂVœö×´e¯€sKØX ı©*q:Ö%N"”—²ZqC”óE.W–97ĞÚ÷ã±p{Q©È•ßÚ=}ğğ‰¼ş$k&$µµ@{¦Ü7²ÈÕ´ÙdĞK•¶9øzeUğfP*³ºOUÄ0”e9ÏŠy¶ò€]˜·\ˆ™p¿­İqµJyÁÑµ£{uøòÄÓo=(²•Š{£¸õ œíÕ|•“v»Uˆ®³VÊÂõÕs5Õ±Œ”§º$eU¢>ÏË¢,Ÿo˜9ù®,ær7'x\¯wÌ ,ñêÚU8Á~¾3lMÍŞÊgŸ—Ÿ<Éæ^È0ÅŞ©²YdUîy¹¨µùÍ8şÒ^Á×«…€Ïìœ»Ê×0Æ¼ £8ª(NŠ‹ â¨ƒ88H† $„6$J
+5K¡&ÈGÉ \>¬ƒ‡.]ş.".Àº© ˆ<>th×‡ğëóæMŞ½¼µe„$÷@†¡AÂ²l)šœ½{§.loã[CCN)VGï8²oÏ"ÀÁÃ{sµ…¸¢,[Û¸§Â=½µZ…6Ø-ƒºQ¿~²ıhÍYÛër½ş×ººj÷^Á–†mUF6•1PJ%ĞÕO‹íşÁƒ¡néÀ2Zÿa'ú	;÷ï?täÜá@9”UÙ[Cû!¹·£%ç¶‹'›‹W×~§#¸?C»/-•€Ó\l£mB©º/7¯7·îÜ	CMßF­¡†À*¤©Öô{¹pğÂÁƒ9¹÷Œ×išdù‚–<ÙNûõşz]bK±áÆ[wŸ<yùp5öÚ¯?ËøÓµÂÀ(ÄÁ"™c:¦i|£©pñz³yĞ×wg"	9gˆ}ad BÈÉ##Œº	”`†“…hÉê´«ïÜ¹Û÷!ÅbÔÄww7÷_½OYânà7•¶®Mf[I0Ùé‰¤Ñwo=Ø¾»]Şòóu|ëR¤À«J  4F½aBªvKq"`å81 ¥‚†Šl}NÖc\ö5VÄOZO!àÛOÖİ×³CÑúµ˜%rp’iI¬·av	¯cy^nÖå6âq¤É­!4ÜVhc!«¥¬$”@6(t“)¤Øj$]}¬Çeö:Ç›WÏ®üÙê³Î^ÖùmĞ9kj§9¹±,ûşÁëbÆ>h7y›‰um†HòV¢F!`Ë(¥JZ€Pµ²áË@rJV¦Øáö·“ÏÌxóêo*Z¿³DÛ<Í>ÅÃXß-6›×e*ºç:h˜sTPœ'è jD@T„Bô‚ˆE=OSôÁ÷uı8'/uBıàïM¬_Ğ®Ã. ½öIÏÇwß®³¤
+Ÿğ—LÑRŠÀ…ƒpiB@³%aÜ‹ÛÊ#,'€sÏMa¢Mİ\ö¸œg=ÍpRcş+v¿mrLZtôãÒó¢.6Û:ì±·Ië´g\Ê0 åáoş&0Æ›r.©¢yÜ­ï·ÕèµM£î
+¼²`ogİÕ¬ëÔUçnšÇMWnV_Ë~´=Öİ4Ä†­7î@Ëq œ;Æ…U‚Ò…sËß@˜¬M:tåZàÎN!}~Ç¿­óWµÚ]÷õë¢èjïKï“¶š®ÍšnJ“mT8 $çrB‚Vğ-‚ÃàÓ4-sW–uYtØE­ÿñm–ï‡Áõ.Gp½ız-¸Š²Ãx^mÊ4((…€–Y64¼… + \9+‘0@ÄBU#4Ñ1y×”uë‹éâÿõ~&Ï{Sz¼ÙŞı
+ØF§‰¬1aeC”¬$"@ÑVCc ,oØ`«"œAE½£ŸS×}ïÿ5m–q×v.W¬|Å8y<N)ø‘5p©`¬Æ0·~BÚ*ƒŞĞ¥¡¡HˆJ˜%-Ø<Û®Xó ş'³Õœ-­mèÅë¹sİ<Ù†F•!  ÏŠ‘VĞ@Ò²¥e ‚8˜-r[Pô†è”S½ïû¿¬Íò#`PwŸ¸Æ}ŸbÒÁ‹PÜHEiËmK ¯lc„ 1Øˆ ’@ §)G?y_ü…m–àìÕ6wÇ¢Cšâú¼'¬¼É‰j’í{²:ÀØG %¤ÊtˆšuL™¤pú_ÏVŸÓÁkÅëò.è´Øian0VÁÅÅ­Š,À9eµ°†È[F€P<Óe‹ÂfŞÊYÿ+»ß¢cÛ%®kŸ–˜Ç`‘l$@ˆÂÕÃ, ‚è†"H5Goihcz»ıŞµhıZÌv¸¾“b“ª%1V©²ÆÂJ:8°IH¥sŒ"bZhƒıÖ¯˜=k7½51RÜ›–CĞmÉm 7 (Š„Zv°Š/ñ?XßµoÆ¨1=Œq“2ur nBªİ*uØ2Û©X˜Ñ "(,3Án!¤ØÊ‡H½—ğ²G°qcğ¼RåGıÿ<kûÍ‡ÏÕÉ
+˜É äÔ"œ$Po	=ƒc‚!ó1B×ÖÃzö7{XÖÈÛ, y!PA%C„è‘†	sŞå©ªz	û9¥ˆÁi1ùmv«/˜¾tcL,¨±Ì ùı¹,²yìj…‰
+óä9¸%ÆIe:ëŸn¿%x“¼¼íz,ÀQ5)P·ğÔñkÛÔM½ŠÍ¾iû¾Ã1;’ß®ÛnwÍCÕô^ùçlt½*7Ù    IEND®B`‚
+
+==========================================
+FILE: ./src/assets/vite.svg
+==========================================
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+
+
+==========================================
+FILE: ./src/api/client.js
+==========================================
+import axios from 'axios';
+import { SAGEION_DEMO_APPS } from '@/config/sageionDemos';
+
+export const TOKEN_KEY = 'crm_token';
+export const USER_KEY = 'crm_user';
+
+// â­ Resolve the currently active demo id. Set by DemoDetail.jsx's
+// "Try Me" button before it navigates to /owner, so by the time any
+// API call fires, this reflects the demo the visitor is exploring.
+//
+// Defaults to 'demo1' when no demo is set (e.g., a direct /owner
+// visit, or a fresh page load before "Try Me" has run). That's a
+// sensible fallback â€” demo1 is the canonical starting point.
+function getActiveDemoId() {
+  if (typeof window === 'undefined') return 'demo1';
+  try {
+    return localStorage.getItem('active_demo') || 'demo1';
+  } catch {
+    return 'demo1';
+  }
+}
+
+// â­ Resolve the API base URL from SAGEION_DEMO_APPS[active_demo].
+//
+// Resolution order:
+//   1. active demo's API_BASE_full_URL
+//   2. NEXT_PUBLIC_API_BASE_full_URL env var
+//   3. any demo's API_BASE_full_URL (guards against a demo entry
+//      that omitted the field by mistake)
+//   4. hardcoded fallback
+//
+// Because active_demo can change mid-session (only via a full page
+// reload, per our design), this is re-evaluated on every request
+// from the interceptor below.
+function currentBaseUrl() {
+  const activeDemoId = getActiveDemoId();
+  const appConfig = SAGEION_DEMO_APPS[activeDemoId];
+  if (appConfig?.API_BASE_full_URL) {
+    return appConfig.API_BASE_full_URL;
+  }
+
+  if (process.env.NEXT_PUBLIC_API_BASE_full_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_full_URL;
+  }
+
+  const firstDemo = Object.values(SAGEION_DEMO_APPS)[0];
+  if (firstDemo?.API_BASE_full_URL) {
+    return firstDemo.API_BASE_full_URL;
+  }
+
+  return 'http://122.160.157.99:3001';
+}
+
+const api = axios.create({
+  // Base URL applied at create time â€” the interceptor re-resolves
+  // it per request in case active_demo changes.
+  baseURL: currentBaseUrl(),
+  headers: { 'Content-Type': 'application/json' },
+});
+
+api.interceptors.request.use((config) => {
+  // Re-resolve on every request.
+  config.baseURL = currentBaseUrl();
+
+  // Attach token
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+api.interceptors.response.use(
+  (r) => r,
+  (err) => {
+    if (typeof window !== 'undefined' && err.response?.status === 401) {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(USER_KEY);
+      if (!window.location.pathname.startsWith('/login')) {
+        window.location.href = '/login';
+      }
+    }
+    return Promise.reject(err);
+  }
+);
+
+export function saveSession(data) {
+  if (typeof window === 'undefined') return;
+  const token = data.token;
+  const user_id = data.user_id || data.user?.id;
+  const email = data.email || data.user?.email;
+  const role = data.role || data.user?.role;
+
+  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(USER_KEY, JSON.stringify({ user_id, email, role }));
+}
+
+export function clearSession() {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(USER_KEY);
+}
+
+export function currentUser() {
+  if (typeof window === 'undefined') return null;
+  try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); }
+  catch { return null; }
+}
+
+export default api;
+
+==========================================
+FILE: ./src/api/AuthContext.jsx
+==========================================
+'use client';
+
+import { createContext, useContext, useMemo, useState, useEffect } from 'react';
+import { currentUser, saveSession, clearSession } from './client';
+import api from './client';
+
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  // â­ Distinguishes "no user" (logged out) from "not hydrated yet".
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setUser(currentUser());
+    setLoaded(true); // â† hydration complete
+  }, []);
+
+  async function login(email, password) {
+    const { data } = await api.post('/auth/login', { email, password });
+    saveSession(data);
+    setUser({ user_id: data.user_id, email: data.email, role: data.role });
+    return data;
+  }
+
+  // â­ NEW: Request OTP for signup (used by Register.jsx)
+  async function sendOtp(email) {
+    const { data } = await api.post('/auth/send-otp', { email, purpose: 'signup' });
+    return data;
+  }
+
+  // â­ UPDATED: Register now requires the OTP (used by VerifyOtp.jsx)
+  async function register(email, password, otp) {
+    const { data } = await api.post('/auth/register', { email, password, otp });
+    saveSession(data);
+    setUser({ user_id: data.user_id, email: data.email, role: data.role });
+    return data;
+  }
+
+  function logout() {
+    clearSession();
+    setUser(null);
+  }
+
+  const value = useMemo(
+    () => ({ user, loaded, login, register, sendOtp, logout }),
+    [user, loaded],
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
+==========================================
+FILE: ./src/components/SageionScripts.jsx
+==========================================
+// src/components/SageionScripts.jsx
+'use client';
+
+import { useEffect } from 'react';
+
+// Module-scope set of appIds we've bootstrapped on this page load.
+// Prevents duplicate <script> tags and duplicate setUp() calls if
+// the component remounts for the same app.
+const BOOTSTRAPPED_APP_IDS = new Set();
+
+export default function SageionScripts({ appConfig }) {
+  useEffect(() => {
+    const appId = appConfig?.SAGEION_APP_ID || appConfig?.appId;
+    const apiKey = appConfig?.SAGEION_API_KEY || appConfig?.apiKey;
+    const region = appConfig?.SAGEION_REGION || appConfig?.region || 'US';
+    const rootId = appConfig?.ROOT_SAGEION_ID || appConfig?.rootId || '';
+
+    if (!appId || !apiKey) {
+      console.error(
+        '[SageionScripts] missing SAGEION_APP_ID or SAGEION_API_KEY in appConfig',
+        appConfig,
+      );
+      return;
+    }
+
+    // Idempotency guards.
+    if (BOOTSTRAPPED_APP_IDS.has(appId)) {
+      console.log('[SageionScripts] already bootstrapped for', appId);
+      return;
+    }
+    if (BOOTSTRAPPED_APP_IDS.size > 0) {
+      console.error(
+        '[SageionScripts] a different Sageion app is already bootstrapped',
+        Array.from(BOOTSTRAPPED_APP_IDS),
+        'â€” refusing to hot-swap to',
+        appId,
+        '. A full page reload is required to switch apps.',
+      );
+      return;
+    }
+    BOOTSTRAPPED_APP_IDS.add(appId);
+
+    // â­ Font Awesome stylesheet â€” added idempotently so a
+    // remount doesn't stack duplicate <link> tags.
+    if (!document.getElementById('sageion-font-awesome')) {
+      const faLink = document.createElement('link');
+      faLink.id = 'sageion-font-awesome';
+      faLink.rel = 'stylesheet';
+      faLink.href =
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+      document.head.appendChild(faLink);
+    }
+
+    const isDev = process.env.NODE_ENV === 'development';
+    const bundleSrc = isDev
+      ? '/local-bundle/bundle.js'
+      : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+
+    // 1. socket.io
+    const socketScript = document.createElement('script');
+    socketScript.src = 'https://cdn.socket.io/4.1.2/socket.io.min.js';
+    socketScript.async = false;
+    document.body.appendChild(socketScript);
+
+    // 2. bundle
+    const bundleScript = document.createElement('script');
+    bundleScript.src = bundleSrc;
+    bundleScript.async = false;
+
+    bundleScript.onload = async () => {
+      console.log('[SageionScripts] bundle loaded for', appId);
+
+      if (!window.sageion_os) {
+        console.error('[SageionScripts] window.sageion_os not present after bundle load');
+        return;
+      }
+
+      try {
+        await window.sageion_os.setUp(appId, apiKey, region, rootId);
+        console.log('[SageionScripts] setUp complete for', appId);
+
+        window.dispatchEvent(
+          new CustomEvent('sageion_setup_complete', {
+            detail: { appId },
+          }),
+        );
+      } catch (err) {
+        console.error('[SageionScripts] setUp failed for', appId, err);
+      }
+    };
+
+    document.body.appendChild(bundleScript);
+
+    // Cleanup: hide the floating bubble when this component unmounts.
+    return () => {
+      try {
+        const bubble = document.querySelector('[id^="chat_modal_opener__"]');
+        if (bubble) bubble.style.display = 'none';
+        const modal = document.querySelector('[class^="chat_modal__"]');
+        if (modal) modal.style.display = 'none';
+      } catch (_) {
+        /* no-op */
+      }
+    };
+  }, [appConfig]);
+
+  return null;
+}
+
+==========================================
+FILE: ./src/components/SageionBridge.jsx
+==========================================
+// src/components/SageionBridge.jsx
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useAuth } from '../api/AuthContext';
+
+export default function SageionBridge({ appConfig }) {
+  const { user, loaded } = useAuth();
+  const [isReady, setIsReady] = useState(false);
+
+  const appId = appConfig?.SAGEION_APP_ID || appConfig?.appId;
+
+  useEffect(() => {
+    const handleSetupComplete = (e) => {
+      // â­ Filter to OUR app id, in case two bridges ever coexist.
+      if (!e.detail || !appId || e.detail.appId === appId) {
+        console.log(
+          '[SageionBridge] received sageion_setup_complete for',
+          e.detail?.appId,
+        );
+        setIsReady(true);
+      }
+    };
+
+    window.addEventListener('sageion_setup_complete', handleSetupComplete);
+
+    // Fallback: event may have fired before we mounted.
+    if (window.sageion_os && window.sageion_os._isSetupComplete) {
+      setIsReady(true);
+    }
+
+    return () => {
+      window.removeEventListener('sageion_setup_complete', handleSetupComplete);
+    };
+  }, [appId]);
+
+  // â­ Only depend on user_id, not the whole user object.
+  // AuthContext creates a fresh object on every login, so depending
+  // on `user` would re-run initialize() even for the same user.
+  const userId = user?.user_id;
+
+  useEffect(() => {
+    if (!isReady) return;
+    if (!loaded) return; // â† don't boot in anonymous mode mid-hydration
+
+    window.sageion_os
+      .initialize(userId ? { uid: String(userId) } : {})
+      .then(() => {
+        // â­ Restore bubble visibility after initialize. SageionScripts
+        // hides it on unmount; this flips it back when we re-enter the
+        // authed tree.
+        const bubble = document.querySelector('[id^="chat_modal_opener__"]');
+        if (bubble) bubble.style.display = '';
+      })
+      .catch((err) => console.error('[Sageion] initialize failed:', err));
+  }, [isReady, loaded, userId]);
+
+  return null;
+}
+
+==========================================
+FILE: ./src/components/Layout.jsx
+==========================================
+'use client';
+
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/api/AuthContext';
+
+const nav = [
+  { to: '/',                     label: 'Demos' },
+  { to: '/owner',                label: 'Running Tables' },
+  { to: '/owner/menu',           label: 'Menu' },
+  { to: '/owner/inventory',      label: 'Inventory' },
+  { to: '/owner/purchase-orders', label: 'Purchase Orders' },
+  { to: '/owner/orders',         label: 'Orders' },
+  { to: '/owner/customers',      label: 'Customers' },
+];
+
+export default function Layout({ children }) {
+  const { user, logout } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  function handleLogout() {
+    logout();
+    router.push('/login');
+  }
+
+  return (
+    <div className="app-shell">
+      <aside className="sidebar">
+        <Link href="/" className="brand" style={{ textDecoration: 'none', color: 'inherit' }}>
+  ğŸ› Ref&nbsp;CRM
+</Link>
+        <nav>
+          {nav.map((n) => {
+            const active = n.to === '/' ? pathname === '/' : pathname.startsWith(n.to);
+            return (
+              <Link key={n.to} href={n.to} className={active ? 'nav-link active' : 'nav-link'}>
+                {n.label}
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+      <div className="main">
+        <header className="topbar">
+          <span className="who">{user?.email} <em>({user?.role})</em></span>
+          <button className="btn btn-ghost" onClick={handleLogout}>Log out</button>
+        </header>
+        <main className="content">{children}</main>
+      </div>
+    </div>
+  );
+}
+
+
+==========================================
+FILE: ./src/components/DemoGuide.jsx
+==========================================
+'use client';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { getDemo } from '@/demos';
+import api from '@/api/client';
+
+export default function DemoGuide() {
+  const [activeDemo, setActiveDemo] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedWorkflowId, setSelectedWorkflowId] = useState(null);
+  const [setupStatus, setSetupStatus] = useState('idle'); 
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const demoId = localStorage.getItem('active_demo') || 'demo1';
+    const demoData = getDemo(demoId);
+    
+    if (demoData && demoData.guide) {
+      setActiveDemo(demoData);
+      if (!localStorage.getItem(`guide_seen_${demoId}`)) {
+        setIsOpen(true);
+      }
+    }
+  }, [pathname]);
+
+  if (!activeDemo || !activeDemo.guide) return null;
+
+  const guide = activeDemo.guide;
+  const workflows = guide.workflows || [{
+    id: "default",
+    title: "Main Workflow",
+    description: "Follow these steps to test the demo.",
+    estimatedClicks: guide.estimatedClicks || 3,
+    steps: guide.steps || []
+  }];
+
+  const currentWorkflowId = selectedWorkflowId || workflows[0]?.id;
+  const selectedWorkflow = workflows.find(w => w.id === currentWorkflowId);
+  const activeStep = selectedWorkflow?.steps.find(s => pathname.includes(s.targetRoute));
+
+  const dismiss = () => {
+    localStorage.setItem(`guide_seen_${activeDemo.id}`, 'true');
+    setIsOpen(false);
+  };
+
+  const injectPrompt = (prompt) => {
+    const event = new CustomEvent('sageion_inject_prompt', { detail: { prompt } });
+    window.dispatchEvent(event);
+  };
+
+  const handleSetup = async () => {
+    setSetupStatus('loading');
+    try {
+      await api.post(`/demos/${activeDemo.id}/setup`);
+      setSetupStatus('success');
+      // Reload the page so the user immediately sees the new stock levels
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (err) {
+      console.error('Setup failed:', err);
+      alert('Failed to set up demo: ' + (err.response?.data?.error || err.message));
+      setSetupStatus('idle');
+    }
+  };
+
+  return (
+    <>
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        style={{ 
+          position: 'fixed', bottom: 24, left: 24, zIndex: 9999, 
+          background: isOpen ? '#0f172a' : '#3b82f6', 
+          color: 'white', padding: '12px 20px', borderRadius: '50px', 
+          border: 'none', cursor: 'pointer', boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+          fontWeight: 600, fontSize: 14, display: 'flex', alignItems: 'center', gap: 8,
+          transition: 'all 0.2s ease-in-out'
+        }}
+      >
+        {isOpen ? 'âœ• Close Guide' : 'âœ¨ Open Demo Guide'}
+      </button>
+
+      {isOpen && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 9998,
+          background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '24px'
+        }}>
+          
+          <div style={{ 
+            width: '100%', maxWidth: '1200px', height: '85vh',
+            background: '#ffffff', borderRadius: '16px', 
+            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', 
+            display: 'flex', overflow: 'hidden',
+            animation: 'fadeIn 0.2s ease-out'
+          }}>
+            
+            <div style={{ 
+              width: '350px', flexShrink: 0,
+              background: '#f8fafc', borderRight: '1px solid #e2e8f0',
+              display: 'flex', flexDirection: 'column'
+            }}>
+              <div style={{ padding: '32px 24px', flex: 1, overflowY: 'auto' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#3b82f6', marginBottom: 8 }}>
+                  Interactive Demo
+                </div>
+                <h2 style={{ margin: '0 0 16px 0', fontSize: 22, fontWeight: 800, color: '#0f172a', lineHeight: 1.2 }}>
+                  {guide.title || activeDemo.name}
+                </h2>
+                
+                <div style={{ 
+                  background: '#ffffff', border: '1px solid #e2e8f0', 
+                  padding: '16px', borderRadius: '8px', marginBottom: 32,
+                  fontSize: 13, lineHeight: 1.6, color: '#475569'
+                }}>
+                  {guide.genericInfo || guide.header}
+                </div>
+
+                <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', color: '#64748b', marginBottom: 12 }}>
+                  Available Workflows
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {workflows.map(wf => {
+                    const isSelected = currentWorkflowId === wf.id;
+                    return (
+                      <button
+                        key={wf.id}
+                        onClick={() => setSelectedWorkflowId(wf.id)}
+                        style={{
+                          textAlign: 'left', padding: '12px 16px', 
+                          background: isSelected ? '#eff6ff' : 'transparent',
+                          border: isSelected ? '1px solid #bfdbfe' : '1px solid transparent',
+                          borderLeft: isSelected ? '4px solid #3b82f6' : '4px solid transparent',
+                          borderRadius: '6px', cursor: 'pointer',
+                          transition: 'all 0.15s ease'
+                        }}
+                      >
+                        <div style={{ fontSize: 14, fontWeight: 600, color: isSelected ? '#1e3a8a' : '#475569', marginBottom: 2 }}>
+                          {wf.title}
+                        </div>
+                        <div style={{ fontSize: 12, color: isSelected ? '#3b82f6' : '#94a3b8' }}>
+                          {wf.estimatedClicks} steps
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div style={{ padding: '24px', borderTop: '1px solid #e2e8f0', background: '#ffffff' }}>
+                <button 
+                  onClick={dismiss} 
+                  style={{ 
+                    width: '100%', padding: '12px', background: '#f1f5f9', 
+                    border: 'none', borderRadius: '8px', cursor: 'pointer', 
+                    fontSize: 14, color: '#475569', fontWeight: 600
+                  }}
+                >
+                  Don't show this again
+                </button>
+              </div>
+            </div>
+
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
+              
+              <div style={{ padding: '32px 40px', borderBottom: '1px solid #e2e8f0' }}>
+                <h3 style={{ margin: '0 0 8px 0', fontSize: 24, fontWeight: 700, color: '#0f172a' }}>
+                  {selectedWorkflow?.title}
+                </h3>
+                <p style={{ margin: 0, fontSize: 15, color: '#64748b', lineHeight: 1.5 }}>
+                  {selectedWorkflow?.description}
+                </p>
+              </div>
+
+              <div style={{ flex: 1, padding: '40px', overflowY: 'auto' }}>
+                <div style={{ position: 'relative', maxWidth: '700px' }}>
+                  
+                  <div style={{ 
+                    position: 'absolute', left: 19, top: 10, bottom: 20, 
+                    width: 2, background: '#e2e8f0', zIndex: 0 
+                  }} />
+
+                  {selectedWorkflow?.steps.map((step, idx) => {
+                    const isCurrent = activeStep?.id === step.id;
+                    return (
+                      <div key={step.id} style={{ 
+                        position: 'relative', zIndex: 1,
+                        display: 'flex', gap: 24, marginBottom: 32 
+                      }}>
+                        
+                        <div style={{ 
+                          width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          fontSize: 16, fontWeight: 700,
+                          background: isCurrent ? '#3b82f6' : '#ffffff',
+                          color: isCurrent ? '#ffffff' : '#94a3b8',
+                          border: isCurrent ? '4px solid #dbeafe' : '2px solid #cbd5e1',
+                          boxShadow: isCurrent ? '0 0 0 4px rgba(59, 130, 246, 0.1)' : 'none',
+                          transition: 'all 0.3s ease',
+                          transform: isCurrent ? 'scale(1.1)' : 'scale(1)'
+                        }}>
+                          {step.id}
+                        </div>
+
+                        <div style={{ flex: 1, paddingTop: 8 }}>
+                          <div style={{ 
+                            fontSize: 18, fontWeight: 700, 
+                            color: isCurrent ? '#0f172a' : '#64748b', 
+                            marginBottom: 6 
+                          }}>
+                            {step.title}
+                          </div>
+                          <div style={{ 
+                            fontSize: 15, lineHeight: 1.6, 
+                            color: isCurrent ? '#334155' : '#94a3b8' 
+                          }}>
+                            {step.instruction}
+                          </div>
+
+                          {step.id === 1 && selectedWorkflow.setupRequired && (
+                            <div style={{ marginTop: 16 }}>
+                              {setupStatus === 'success' ? (
+                                <div style={{ padding: '12px 16px', background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', borderRadius: 8, fontSize: 14, fontWeight: 600 }}>
+                                  âœ… Demo state prepared successfully! Reloading...
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={handleSetup}
+                                  disabled={setupStatus === 'loading'}
+                                  style={{
+                                    padding: '12px 24px', background: '#3b82f6', color: 'white',
+                                    border: 'none', borderRadius: 8, fontSize: 15, fontWeight: 600,
+                                    cursor: setupStatus === 'loading' ? 'not-allowed' : 'pointer',
+                                    display: 'flex', alignItems: 'center', gap: 8,
+                                    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+                                  }}
+                                >
+                                  {setupStatus === 'loading' ? 'Preparing...' : 'âš¡ Auto-Setup Demo State'}
+                                </button>
+                              )}
+                            </div>
+                          )}
+                          
+                          {step.samplePrompt && (
+                             <button 
+                               onClick={() => injectPrompt(step.samplePrompt)}
+                               style={{ 
+                                 marginTop: 16, padding: '14px 20px', 
+                                 background: '#f0fdf4', border: '1px solid #bbf7d0', 
+                                 borderRadius: 8, fontSize: 15, color: '#166534',
+                                 cursor: 'pointer', textAlign: 'left', width: '100%',
+                                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                                 transition: 'all 0.2s ease', boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
+                                 fontFamily: 'ui-monospace, monospace'
+                               }}
+                               onMouseOver={(e) => { e.currentTarget.style.background = '#dcfce7'; e.currentTarget.style.borderColor = '#86efac'; }}
+                               onMouseOut={(e) => { e.currentTarget.style.background = '#f0fdf4'; e.currentTarget.style.borderColor = '#bbf7d0'; }}
+                             >
+                               <span>ğŸ’¬ "{step.samplePrompt}"</span>
+                               <span style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 6 }}>
+                                 Click to use <span style={{ fontSize: 18 }}>â†’</span>
+                               </span>
+                             </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+==========================================
+FILE: ./src/components/ProtectedRoute.jsx
+==========================================
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/api/AuthContext';
+
+export default function ProtectedRoute({ children }) {
+  const { user, loaded } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    // â­ Only redirect once auth has actually hydrated. Before `loaded`
+    // flips, `user === null` is ambiguous â€” it means "haven't checked
+    // localStorage yet", not "logged out".
+    if (loaded && !user) {
+      router.replace('/login');
+    }
+  }, [loaded, user, router]);
+
+  // â­ Render nothing while auth is hydrating. One frame in practice.
+  if (!loaded) return null;
+
+  // â­ After hydration with no user â€” the redirect effect above is
+  // queued. Return null so we don't flash protected content.
+  if (!user) return null;
+
+  return children;
+}
+
+==========================================
+FILE: ./next.config.mjs
+==========================================
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+};
+
+export default nextConfig;
+
+==========================================
+FILE: ./README.md
+==========================================
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+==========================================
+FILE: ./app/demos/[id]/layout.jsx
+==========================================
+// app/demos/[id]/layout.jsx
+'use client';
+
+import ProtectedRoute from '@/components/ProtectedRoute';
+
+export default function DemoLayout({ children }) {
+  return <ProtectedRoute>{children}</ProtectedRoute>;
+}
+
+==========================================
+FILE: ./app/demos/[id]/page.jsx
+==========================================
+import dynamic from 'next/dynamic';
+import { getAllDemos } from '@/demos'; // â­ Import Registry
+
+const DemoDetail = dynamic(() => import('@/views/DemoDetail'), { ssr: false });
+
+// â­ Dynamically generate the routes based on the demos we have
+export function generateStaticParams() {
+  const demos = getAllDemos();
+  return demos.map((d) => ({ id: d.id }));
+}
+
+export default function Page({ params }) {
+  return <DemoDetail id={params.id} />;
+}
+
+==========================================
+FILE: ./app/verify-otp/page.jsx
+==========================================
+import dynamic from 'next/dynamic';
+const VerifyOtp = dynamic(() => import('@/views/VerifyOtp'), { ssr: false });
+export default function Page() { return <VerifyOtp />; }
+
+==========================================
+FILE: ./app/layout.jsx
+==========================================
+import './globals.css';
+import { AuthProvider } from '@/api/AuthContext';
+import Script from 'next/script';
+
+export const metadata = { title: 'Ref CRM' };
+
+
+export default function RootLayout({ children }) {
+  const isDev = process.env.NODE_ENV === 'development';
+  console.log("Arewrwhrwerwe?",isDev)
+  const bundleSrc = isDev
+    ? '/local-bundle/bundle.js'
+    : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" />
+      </head>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+
+        {/* â­ Sageion bundle â€” loads ONCE for the whole app.
+            Loaded beforeInteractive so it's ready by the time
+            any page calls window.sageion_os.mount(). */}
+        <Script
+          src="https://cdn.socket.io/4.1.2/socket.io.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src={bundleSrc}
+          strategy="beforeInteractive"
+        />
+      </body>
+    </html>
+  );
+}
+
+==========================================
+FILE: ./app/(app)/layout.jsx
+==========================================
+// app/(app)/layout.jsx
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import Layout from '@/components/Layout';
+import DemoGuide from '@/components/DemoGuide'; 
+import { getSageionApp } from '@/config/sageionDemos';
+import { useAuth } from '@/api/AuthContext';
+
+export default function AuthedLayout({ children }) {
+  const { user, loaded } = useAuth();
+  const [activeDemoId, setActiveDemoId] = useState(null);
+  const handleRef = useRef(null);
+
+  useEffect(() => {
+    setActiveDemoId(localStorage.getItem('active_demo') || 'demo1');
+  }, []);
+
+  useEffect(() => {
+    if (!activeDemoId || !loaded) return;
+    const appConfig = getSageionApp(activeDemoId);
+    if (!appConfig) return;
+
+    const handle = window.sageion_os.mount({
+      appId: appConfig.SAGEION_APP_ID,
+      apiKey: appConfig.SAGEION_API_KEY,
+      region: appConfig.SAGEION_REGION,
+      rootId: appConfig.ROOT_SAGEION_ID || '',
+      match: '/',
+    });
+    handleRef.current = handle;
+
+    handle.updateUid(user?.user_id ?? null);
+
+    return () => {
+      handleRef.current = null;
+      handle.unmount();
+    };
+  }, [activeDemoId, loaded]);
+
+  useEffect(() => {
+    if (handleRef.current && loaded) {
+      handleRef.current.updateUid(user?.user_id ?? null);
+    }
+  }, [user?.user_id, loaded]);
+
+  // â­ NEW: Listen for the "Use â†’" button click from DemoGuide
+  useEffect(() => {
+    const handleInjectPrompt = (e) => {
+      const { prompt } = e.detail;
+      
+      // Sageion mounts to document.body, so we can query it directly.
+      // We use a slight delay to ensure the chat input is fully rendered if the chat was just opened.
+      setTimeout(() => {
+        // Try to find the textarea (Sageion's chat input)
+        const chatInput = document.querySelector('textarea[placeholder*="Type a message"]') || 
+                          document.querySelector('textarea') || 
+                          document.querySelector('input[type="text"]'); 
+        
+        if (chatInput) {
+          chatInput.value = prompt;
+          // React inputs need this native event to trigger their state change
+          const event = new Event('input', { bubbles: true });
+          chatInput.dispatchEvent(event);
+          chatInput.focus();
+        } else {
+          console.warn('[DemoGuide] Could not find Sageion chat input to inject prompt.');
+        }
+      }, 300); 
+    };
+
+    window.addEventListener('sageion_inject_prompt', handleInjectPrompt);
+    return () => window.removeEventListener('sageion_inject_prompt', handleInjectPrompt);
+  }, []);
+
+  return (
+    <ProtectedRoute>
+      <Layout>
+        {children}
+      </Layout>
+      <DemoGuide /> 
+    </ProtectedRoute>
+  );
+}
+
+==========================================
+FILE: ./app/(app)/owner/layout.jsx
+==========================================
+// app/(app)/owner/layout.jsx
+export default function OwnerLayout({ children }) {
+  return children;
+}
+
+==========================================
+FILE: ./app/(app)/owner/inventory/page.jsx
+==========================================
+import Inventory from '@/views/Inventory';
+export default function Page() { return <Inventory />; }
+
+
+==========================================
+FILE: ./app/(app)/owner/menu/page.jsx
+==========================================
+import Menu from '@/views/Menu';
+export default function Page() { return <Menu />; }
+
+
+==========================================
+FILE: ./app/(app)/owner/purchase-orders/page.jsx
+==========================================
+import PurchaseOrders from '@/views/PurchaseOrders';
+export default function Page() { return <PurchaseOrders />; }
+
+
+==========================================
+FILE: ./app/(app)/owner/orders/page.jsx
+==========================================
+import Orders from '@/views/Orders';
+export default function Page() { return <Orders />; }
+
+
+==========================================
+FILE: ./app/(app)/owner/page.jsx
+==========================================
+import RunningTables from '@/views/RunningTables';
+export default function Page() { return <RunningTables />; }
+
+
+==========================================
+FILE: ./app/(app)/owner/customers/page.jsx
+==========================================
+import Customers from '@/views/Customers';
+export default function Page() { return <Customers />; }
+
+
+==========================================
+FILE: ./app/login/page.jsx
+==========================================
+import dynamic from 'next/dynamic';
+
+const Login = dynamic(() => import('@/views/Login'), { ssr: false });
+
+export default function Page() {
+  return <Login />;
+}
+
+==========================================
+FILE: ./app/globals.css
+==========================================
+:root {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --panel-2: #1e222b;
+  --text: #e6e8ec;
+  --muted: #8b93a3;
+  --border: #262b36;
+  --brand: #ffb454;
+  --brand-2: #ff7a45;
+  --ok: #34c759;
+  --warn: #ffcc00;
+  --danger: #ff453a;
+  --info: #5ac8fa;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--text); }
+a { color: inherit; text-decoration: none; }
+.mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+.small { font-size: 0.8rem; }
+.muted { color: var(--muted); }
+
+/* Shell */
+.app-shell { display: grid; grid-template-columns: 220px 1fr; height: 100vh; }
+.sidebar { background: var(--panel); border-right: 1px solid var(--border); padding: 20px 14px; }
+.brand { font-weight: 700; font-size: 1.15rem; margin-bottom: 22px; }
+.sidebar nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-link { padding: 9px 12px; border-radius: 8px; color: var(--muted); }
+.nav-link:hover { background: var(--panel-2); color: var(--text); }
+.nav-link.active { background: var(--panel-2); color: var(--brand); }
+.main { display: flex; flex-direction: column; overflow: auto; }
+.topbar {
+  display: flex; justify-content: flex-end; align-items: center; gap: 16px;
+  padding: 14px 24px; border-bottom: 1px solid var(--border); background: var(--panel);
+}
+.who { color: var(--muted); font-size: 0.9rem; }
+.content { padding: 28px 32px; max-width: 1100px; }
+h1 { margin-top: 0; }
+h2, h3 { color: var(--text); }
+
+/* Cards */
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px 20px; margin: 14px 0;
+}
+.grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.stat { display: flex; flex-direction: column; padding: 20px; }
+.stat:hover { border-color: var(--brand); }
+.stat-num { font-size: 1.8rem; font-weight: 700; color: var(--brand); }
+.stat-num.warn { color: var(--warn); }
+.stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+/* Buttons */
+.btn {
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+  padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.9rem;
+}
+.btn:hover { border-color: var(--brand); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--brand); color: #1a1000; border-color: var(--brand); font-weight: 600; }
+.btn-primary:hover { background: var(--brand-2); border-color: var(--brand-2); }
+.btn-danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+.btn-ghost { background: transparent; }
+.btn-small { padding: 4px 9px; font-size: 0.8rem; }
+
+/* Table */
+.table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+.table th, .table td {
+  padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top;
+}
+.table th { color: var(--muted); font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.row-warn td { background: rgba(255, 204, 0, 0.06); }
+.warn { color: var(--warn); }
+
+/* Pills */
+.pill {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600;
+  background: var(--panel-2); color: var(--muted); border: 1px solid var(--border);
+}
+.pill.ok, .pill.approved, .pill.placed { color: var(--ok); border-color: var(--ok); }
+.pill.off, .pill.rejected, .pill.cancelled { color: var(--danger); border-color: var(--danger); }
+.pill.pending_supplier, .pill.preparing { color: var(--warn); border-color: var(--warn); }
+.pill.shipped, .pill.delivered, .pill.received { color: var(--info); border-color: var(--info); }
+
+/* Alerts */
+.alert { padding: 10px 14px; border-radius: 8px; margin: 10px 0; }
+.alert.error { background: rgba(255, 69, 58, 0.12); color: var(--danger); border: 1px solid var(--danger); }
+.alert.info  { background: rgba(90, 200, 250, 0.10); color: var(--info);   border: 1px solid var(--info); }
+
+/* Forms */
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+input, select {
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+  padding: 8px 10px; border-radius: 8px; font-size: 0.95rem; min-width: 8rem;
+}
+input:focus, select:focus { outline: none; border-color: var(--brand); }
+.inline-form {
+  display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap;
+}
+.row { display: flex; gap: 10px; align-items: center; }
+
+/* Login */
+.login-wrap {
+  min-height: 100vh; display: grid; place-items: center; background: var(--bg);
+}
+.login-card { width: 340px; display: flex; flex-direction: column; gap: 12px; }
+.login-card h1 { margin: 0; text-align: center; }
+
+.tip { color: var(--muted); }
+
+
+
+/* Running tables */
+/* â”€â”€ Running tables (owner view) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.tables-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.tables-list {
+  padding: 14px;
+}
+.tables-list h3 { margin-top: 0; }
+
+.table-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  margin-bottom: 8px;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+.table-row:hover { border-color: var(--brand); }
+.table-row.active { border-color: var(--brand); background: rgba(255,180,84,0.06); }
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.totals {
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+}
+.totals.grand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--brand);
+  border-top: 2px solid var(--border);
+}
+
+/* â”€â”€ Chat panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.chat-log {
+  max-height: 340px;
+  overflow-y: auto;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.chat-msg {
+  margin-bottom: 12px;
+}
+.chat-msg.user .chat-role { color: var(--brand); }
+.chat-msg.assistant .chat-role { color: var(--info); }
+.chat-role {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.chat-text {
+  margin: 0;
+  padding: 8px 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.chat-msg.user .chat-text { border-color: var(--brand); }
+.chat-msg.assistant .chat-text { border-color: var(--info); }
+
+/* Turn indicator â€” the "chain is running" feeling while /discount or /ask is in flight. */
+.chat-msg.pending .chat-text {
+  color: var(--muted);
+  font-style: italic;
+}
+.chat-msg.pending .chat-text::after {
+  content: "â€¦";
+  animation: dots 1.2s steps(4, end) infinite;
+}
+@keyframes dots {
+  0%, 20% { content: ""; }
+  40% { content: "."; }
+  60% { content: ".."; }
+  80%, 100% { content: "..."; }
+}
+
+==========================================
+FILE: ./app/page.jsx
+==========================================
+// app/page.jsx
+import Demos from '@/views/Demos';
+
+export default function Page() {
+  return <Demos />;
+}
+
+
+==========================================
+FILE: ./app/register/page.jsx
+==========================================
+import dynamic from 'next/dynamic';
+const Register = dynamic(() => import('@/views/Register'), { ssr: false });
+export default function Page() { return <Register />; }
