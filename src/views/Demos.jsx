@@ -10,7 +10,7 @@ export default function Demos() {
     {
       icon: "⏱️",
       title: "10-Minute Setup",
-      desc: "Stop building AI infrastructure from scratch. Wire up a production-grade workflow in a single afternoon.",
+      desc: "Stoppppp building AI infrastructure from scratch. Wire up a production-grade workflow in a single afternoon.",
     },
     {
       icon: "💸",
